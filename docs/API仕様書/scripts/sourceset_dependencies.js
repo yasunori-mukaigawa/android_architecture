@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":app/release":[],":core:presentation/release":[],":core:license/release":[],":core:ui/release":[],":core:foundation/release":[],":core:storage/release":[],":core:platform/release":[],":core:network/release":[]}'

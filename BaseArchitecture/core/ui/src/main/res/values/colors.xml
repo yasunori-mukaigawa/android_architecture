@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        Default / Light
+
+        標準テーマのライトモード用カラー定義。
+        汎用的な業務アプリで使いやすい、白背景 + 青系 primary の配色。
+    -->
+    <color name="base_default_light_primary">#2563EB</color>
+    <color name="base_default_light_on_primary">#FFFFFF</color>
+
+    <color name="base_default_light_secondary">#64748B</color>
+    <color name="base_default_light_on_secondary">#FFFFFF</color>
+
+    <color name="base_default_light_background">#F8FAFC</color>
+    <color name="base_default_light_on_background">#0F172A</color>
+
+    <color name="base_default_light_surface">#FFFFFF</color>
+    <color name="base_default_light_on_surface">#0F172A</color>
+
+    <color name="base_default_light_surface_variant">#E2E8F0</color>
+    <color name="base_default_light_on_surface_variant">#475569</color>
+
+    <color name="base_default_light_error">#DC2626</color>
+    <color name="base_default_light_on_error">#FFFFFF</color>
+
+    <color name="base_default_light_outline">#CBD5E1</color>
+
+
+    <!--
+        Dashboard / Light
+
+        ダッシュボード向けテーマのライトモード用カラー定義。
+        Default よりも background / surfaceVariant に少し色味を持たせ、
+        カード・一覧・統計表示などの面構成が見えやすい配色にしている。
+    -->
+    <color name="base_dashboard_light_primary">#2563EB</color>
+    <color name="base_dashboard_light_on_primary">#FFFFFF</color>
+
+    <color name="base_dashboard_light_secondary">#64748B</color>
+    <color name="base_dashboard_light_on_secondary">#FFFFFF</color>
+
+    <color name="base_dashboard_light_background">#F1F5F9</color>
+    <color name="base_dashboard_light_on_background">#0F172A</color>
+
+    <color name="base_dashboard_light_surface">#FFFFFF</color>
+    <color name="base_dashboard_light_on_surface">#0F172A</color>
+
+    <color name="base_dashboard_light_surface_variant">#E0F2FE</color>
+    <color name="base_dashboard_light_on_surface_variant">#334155</color>
+
+    <color name="base_dashboard_light_error">#DC2626</color>
+    <color name="base_dashboard_light_on_error">#FFFFFF</color>
+
+    <color name="base_dashboard_light_outline">#CBD5E1</color>
+
+
+    <!--
+        Default / Dark
+
+        標準テーマのダークモード用カラー定義。
+        暗い背景に対して primary / secondary を明るめに設定し、
+        ボタン・リンク・選択状態が沈みすぎないようにしている。
+    -->
+    <color name="base_default_dark_primary">#60A5FA</color>
+    <color name="base_default_dark_on_primary">#0B1220</color>
+
+    <color name="base_default_dark_secondary">#94A3B8</color>
+    <color name="base_default_dark_on_secondary">#0B1220</color>
+
+    <color name="base_default_dark_background">#111827</color>
+    <color name="base_default_dark_on_background">#E5E7EB</color>
+
+    <color name="base_default_dark_surface">#1F2937</color>
+    <color name="base_default_dark_on_surface">#F9FAFB</color>
+
+    <color name="base_default_dark_surface_variant">#273449</color>
+    <color name="base_default_dark_on_surface_variant">#CBD5E1</color>
+
+    <color name="base_default_dark_error">#FCA5A5</color>
+    <color name="base_default_dark_on_error">#111827</color>
+
+    <color name="base_default_dark_outline">#475569</color>
+
+
+    <!--
+        Dashboard / Dark
+
+        ダッシュボード向けテーマのダークモード用カラー定義。
+        Default Dark よりも background / surface に青みを持たせ、
+        情報量の多い画面でも領域のまとまりが見えやすい配色にしている。
+    -->
+    <color name="base_dashboard_dark_primary">#60A5FA</color>
+    <color name="base_dashboard_dark_on_primary">#0B1220</color>
+
+    <color name="base_dashboard_dark_secondary">#93C5FD</color>
+    <color name="base_dashboard_dark_on_secondary">#0B1220</color>
+
+    <color name="base_dashboard_dark_background">#0F172A</color>
+    <color name="base_dashboard_dark_on_background">#E5E7EB</color>
+
+    <color name="base_dashboard_dark_surface">#1E293B</color>
+    <color name="base_dashboard_dark_on_surface">#F8FAFC</color>
+
+    <color name="base_dashboard_dark_surface_variant">#24324A</color>
+    <color name="base_dashboard_dark_on_surface_variant">#CBD5E1</color>
+
+    <color name="base_dashboard_dark_error">#FCA5A5</color>
+    <color name="base_dashboard_dark_on_error">#111827</color>
+
+    <color name="base_dashboard_dark_outline">#475569</color>
+
+</resources>

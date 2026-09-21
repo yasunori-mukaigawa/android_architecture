@@ -1,0 +1,448 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>jp.co.nsco.basearchitecture.core.ui.theme</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    BaseArchitecture
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":core:ui/release">release</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:ui/release" data-filter=":core:ui/release">
+                                <span class="checkbox--icon"></span>
+                                release
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    BaseArchitecture
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="ui::jp.co.nsco.basearchitecture.core.ui.theme////PointingToDeclaration//-1381317157">
+  <div class="breadcrumbs"><a href="../index.html">ui</a><span class="delimiter">/</span><span class="current">jp.co.nsco.basearchitecture.core.ui.theme</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="805082647%2FClasslikes%2F-1381317157" anchor-label="BaseSpacing" id="805082647%2FClasslikes%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-base-spacing/index.html"><span>Base</span><wbr><span><span>Spacing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="805082647%2FClasslikes%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-base-spacing/index.html">BaseSpacing</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>xs<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html">Dp</a><span class="token operator"> = </span>4.dp<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>sm<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html">Dp</a><span class="token operator"> = </span>8.dp<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>md<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html">Dp</a><span class="token operator"> = </span>16.dp<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lg<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html">Dp</a><span class="token operator"> = </span>24.dp<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>xl<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html">Dp</a><span class="token operator"> = </span>32.dp</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">アプリ共通の余白定義。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-854801007%2FClasslikes%2F-1381317157" anchor-label="BaseTheme" id="-854801007%2FClasslikes%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-base-theme/index.html"><span>Base</span><wbr><span><span>Theme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-854801007%2FClasslikes%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-base-theme/index.html">BaseTheme</a></div><div class="brief "><p class="paragraph">アプリ共通テーマ値へアクセスするための入口。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-652772494%2FClasslikes%2F-1381317157" anchor-label="BaseThemePreset" id="-652772494%2FClasslikes%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-base-theme-preset/index.html"><span>Base</span><wbr><span>Theme</span><wbr><span><span>Preset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-652772494%2FClasslikes%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-base-theme-preset/index.html">BaseThemePreset</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>id<span class="token operator">: </span><span data-unresolved-link="jp.co.nsco.basearchitecture.core.theme/AppThemeId///PointingToDeclaration/">AppThemeId</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lightColorScheme<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/ColorScheme.html">ColorScheme</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>darkColorScheme<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/ColorScheme.html">ColorScheme</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>typography<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/Typography.html">Typography</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>shapes<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/Shapes.html">Shapes</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>spacing<span class="token operator">: </span><a href="-base-spacing/index.html">BaseSpacing</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">アプリテーマを構成する定義一式。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1629322284%2FClasslikes%2F-1381317157" anchor-label="BaseThemeRegistry" id="-1629322284%2FClasslikes%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-base-theme-registry/index.html"><span>Base</span><wbr><span>Theme</span><wbr><span><span>Registry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1629322284%2FClasslikes%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-base-theme-registry/index.html">BaseThemeRegistry</a></div><div class="brief "><p class="paragraph">テーマ ID から ThemePreset を解決するための契約。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1950801477%2FClasslikes%2F-1381317157" anchor-label="DefaultBaseThemeRegistry" id="1950801477%2FClasslikes%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-default-base-theme-registry/index.html"><span>Default</span><wbr><span>Base</span><wbr><span>Theme</span><wbr><span><span>Registry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1950801477%2FClasslikes%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-default-base-theme-registry/index.html">DefaultBaseThemeRegistry</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span> : <a href="-base-theme-registry/index.html">BaseThemeRegistry</a></div><div class="brief "><p class="paragraph">アプリ標準の BaseThemeRegistry 実装。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="678102304%2FClasslikes%2F-1381317157" anchor-label="ThemeUiModule" id="678102304%2FClasslikes%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-theme-ui-module/index.html"><span>Theme</span><wbr><span>Ui</span><wbr><span><span>Module</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="678102304%2FClasslikes%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Module///PointingToDeclaration/"><span class="token annotation builtin">Module</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-theme-ui-module/index.html">ThemeUiModule</a></div><div class="brief "><p class="paragraph">Compose UI テーマ関連の依存を DI コンテナへ登録する Hilt Module。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-454868370%2FProperties%2F-1381317157" anchor-label="DashboardShapes" id="-454868370%2FProperties%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-dashboard-shapes.html"><span>Dashboard</span><wbr><span><span>Shapes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-454868370%2FProperties%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-dashboard-shapes.html">DashboardShapes</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/Shapes.html">Shapes</a></div><div class="brief "><p class="paragraph">Dashboard テーマで使用する角丸定義。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="831962583%2FProperties%2F-1381317157" anchor-label="DashboardSpacing" id="831962583%2FProperties%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-dashboard-spacing.html"><span>Dashboard</span><wbr><span><span>Spacing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="831962583%2FProperties%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-dashboard-spacing.html">DashboardSpacing</a><span class="token operator">: </span><a href="-base-spacing/index.html">BaseSpacing</a></div><div class="brief "><p class="paragraph">Dashboard テーマで使用する spacing。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1454744863%2FProperties%2F-1381317157" anchor-label="DefaultShapes" id="-1454744863%2FProperties%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-default-shapes.html"><span>Default</span><wbr><span><span>Shapes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1454744863%2FProperties%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-default-shapes.html">DefaultShapes</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/Shapes.html">Shapes</a></div><div class="brief "><p class="paragraph">Default テーマで使用する角丸定義。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-99437628%2FProperties%2F-1381317157" anchor-label="DefaultSpacing" id="-99437628%2FProperties%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-default-spacing.html"><span>Default</span><wbr><span><span>Spacing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-99437628%2FProperties%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-default-spacing.html">DefaultSpacing</a><span class="token operator">: </span><a href="-base-spacing/index.html">BaseSpacing</a></div><div class="brief "><p class="paragraph">Default テーマで使用する標準 spacing。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1459584580%2FProperties%2F-1381317157" anchor-label="DefaultTypography" id="1459584580%2FProperties%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-default-typography.html"><span>Default</span><wbr><span><span>Typography</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1459584580%2FProperties%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-default-typography.html">DefaultTypography</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/Typography.html">Typography</a></div><div class="brief "><p class="paragraph">アプリ標準の Typography。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="827482143%2FProperties%2F-1381317157" anchor-label="LocalBaseSpacing" id="827482143%2FProperties%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-local-base-spacing.html"><span>Local</span><wbr><span>Base</span><wbr><span><span>Spacing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="827482143%2FProperties%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-local-base-spacing.html">LocalBaseSpacing</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/ProvidableCompositionLocal.html">ProvidableCompositionLocal</a><span class="token operator">&lt;</span><a href="-base-spacing/index.html">BaseSpacing</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">CompositionLocal として提供するアプリ共通 spacing。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-424085446%2FFunctions%2F-1381317157" anchor-label="BaseAppTheme" id="-424085446%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-base-app-theme.html"><span>Base</span><wbr><span>App</span><wbr><span><span>Theme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-424085446%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="-base-app-theme.html"><span class="token function">BaseAppTheme</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">themeSettings<span class="token operator">: </span><span data-unresolved-link="jp.co.nsco.basearchitecture.core.theme/ThemeSettings///PointingToDeclaration/">ThemeSettings</span><span class="token punctuation">, </span></span><span class="parameter ">themeRegistry<span class="token operator">: </span><a href="-base-theme-registry/index.html">BaseThemeRegistry</a><span class="token punctuation">, </span></span><span class="parameter ">content<span class="token operator">: </span><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a>&nbsp;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">アプリ全体へ共通テーマを適用する Composable。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1401368952%2FFunctions%2F-1381317157" anchor-label="dashboardDarkColorScheme" id="-1401368952%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dashboard-dark-color-scheme.html"><span>dashboard</span><wbr><span>Dark</span><wbr><span>Color</span><wbr><span><span>Scheme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1401368952%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="dashboard-dark-color-scheme.html"><span class="token function">dashboardDarkColorScheme</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/ColorScheme.html">ColorScheme</a></div><div class="brief "><p class="paragraph">Dashboard テーマの Dark 用 ColorScheme を生成する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="885614478%2FFunctions%2F-1381317157" anchor-label="dashboardLightColorScheme" id="885614478%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dashboard-light-color-scheme.html"><span>dashboard</span><wbr><span>Light</span><wbr><span>Color</span><wbr><span><span>Scheme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="885614478%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="dashboard-light-color-scheme.html"><span class="token function">dashboardLightColorScheme</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/ColorScheme.html">ColorScheme</a></div><div class="brief "><p class="paragraph">Dashboard テーマの Light 用 ColorScheme を生成する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2074720594%2FFunctions%2F-1381317157" anchor-label="dashboardThemePreset" id="2074720594%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dashboard-theme-preset.html"><span>dashboard</span><wbr><span>Theme</span><wbr><span><span>Preset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2074720594%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="dashboard-theme-preset.html"><span class="token function">dashboardThemePreset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-base-theme-preset/index.html">BaseThemePreset</a></div><div class="brief "><p class="paragraph">Dashboard テーマの ThemePreset を生成する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1234964341%2FFunctions%2F-1381317157" anchor-label="defaultDarkColorScheme" id="1234964341%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-dark-color-scheme.html"><span>default</span><wbr><span>Dark</span><wbr><span>Color</span><wbr><span><span>Scheme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1234964341%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="default-dark-color-scheme.html"><span class="token function">defaultDarkColorScheme</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/ColorScheme.html">ColorScheme</a></div><div class="brief "><p class="paragraph">Default テーマの Dark 用 ColorScheme を生成する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1007567937%2FFunctions%2F-1381317157" anchor-label="defaultLightColorScheme" id="1007567937%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-light-color-scheme.html"><span>default</span><wbr><span>Light</span><wbr><span>Color</span><wbr><span><span>Scheme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1007567937%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="default-light-color-scheme.html"><span class="token function">defaultLightColorScheme</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/ColorScheme.html">ColorScheme</a></div><div class="brief "><p class="paragraph">Default テーマの Light 用 ColorScheme を生成する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1816426687%2FFunctions%2F-1381317157" anchor-label="defaultThemePreset" id="1816426687%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-theme-preset.html"><span>default</span><wbr><span>Theme</span><wbr><span><span>Preset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1816426687%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="default-theme-preset.html"><span class="token function">defaultThemePreset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-base-theme-preset/index.html">BaseThemePreset</a></div><div class="brief "><p class="paragraph">Default テーマの ThemePreset を生成する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1772469181%2FFunctions%2F-1381317157" anchor-label="rememberUseDarkTheme" id="1772469181%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remember-use-dark-theme.html"><span>remember</span><wbr><span>Use</span><wbr><span>Dark</span><wbr><span><span>Theme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1772469181%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="remember-use-dark-theme.html"><span class="token function">rememberUseDarkTheme</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">themeMode<span class="token operator">: </span><span data-unresolved-link="jp.co.nsco.basearchitecture.core.theme/AppThemeMode///PointingToDeclaration/">AppThemeMode</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">テーマモードから現在 Dark テーマを使用するか判定する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="574159982%2FFunctions%2F-1381317157" anchor-label="useDarkThemeForMode" id="574159982%2FFunctions%2F-1381317157" data-filterable-set=":core:ui/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:ui/release" data-filterable-set=":core:ui/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="use-dark-theme-for-mode.html"><span>use</span><wbr><span>Dark</span><wbr><span>Theme</span><wbr><span>For</span><wbr><span><span>Mode</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="574159982%2FFunctions%2F-1381317157"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ui/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="use-dark-theme-for-mode.html"><span class="token function">useDarkThemeForMode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">themeMode<span class="token operator">: </span><span data-unresolved-link="jp.co.nsco.basearchitecture.core.theme/AppThemeMode///PointingToDeclaration/">AppThemeMode</span><span class="token punctuation">, </span></span><span class="parameter ">systemInDarkTheme<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">テーマモードとシステム Dark テーマ状態から、 アプリで Dark テーマを使用するか判定する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

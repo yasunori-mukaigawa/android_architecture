@@ -1,0 +1,295 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ApiError</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../../index.html" tabindex="1">
+                    BaseArchitecture
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":core:network/release">release</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:network/release" data-filter=":core:network/release">
+                                <span class="checkbox--icon"></span>
+                                release
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    BaseArchitecture
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="network::jp.co.nsco.basearchitecture.core.network/ApiError///PointingToDeclaration//-886418619">
+  <div class="breadcrumbs"><a href="../../index.html">network</a><span class="delimiter">/</span><a href="../index.html">jp.co.nsco.basearchitecture.core.network</a><span class="delimiter">/</span><span class="current">ApiError</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Api</span><wbr><span><span>Error</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="index.html">ApiError</a></div><p class="paragraph">API 通信処理で発生した失敗理由を表すエラー契約。</p><p class="paragraph">ApiError は、Retrofit / OkHttp / 通信例外 / HTTP ステータスなどを、 API 通信領域で扱いやすい失敗理由として分類したものである。</p><p class="paragraph">■ 提供する責務 ネットワーク未接続の表現 タイムアウトの表現 HTTP エラーレスポンスの表現 認証・認可エラーの表現 レスポンスボディ不足の表現 レスポンス解析失敗の表現 想定外通信エラーの表現</p><p class="paragraph">■ 設計上の意図 Retrofit / OkHttp の例外や Response をそのまま上位層へ漏らさず、 API 通信としての失敗理由に変換する。</p><p class="paragraph">ApiError は通信領域の詳細な分類を表し、 最終的に AppError へ変換して Application / Presentation 層へ返す。</p><p class="paragraph">■ 注意 ApiError は API 通信内部の分類であり、画面表示用エラーではない。 UI 表示には AppError から UiError へ変換した情報を使用する。</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-network-unavailable/index.html">NetworkUnavailable</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-timeout/index.html">Timeout</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-http-error/index.html">HttpError</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-unauthorized/index.html">Unauthorized</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-forbidden/index.html">Forbidden</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-not-found/index.html">NotFound</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-empty-body/index.html">EmptyBody</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-parse-error/index.html">ParseError</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-unknown/index.html">Unknown</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1594194535%2FClasslikes%2F-886418619" anchor-label="EmptyBody" id="-1594194535%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-empty-body/index.html"><span>Empty</span><wbr><span><span>Body</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1594194535%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-empty-body/index.html">EmptyBody</a> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">成功レスポンスだが Body が存在しない状態。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1348667025%2FClasslikes%2F-886418619" anchor-label="Forbidden" id="-1348667025%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-forbidden/index.html"><span><span>Forbidden</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1348667025%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-forbidden/index.html">Forbidden</a> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">認可エラー。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1849907432%2FClasslikes%2F-886418619" anchor-label="HttpError" id="1849907432%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-http-error/index.html"><span>Http</span><wbr><span><span>Error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1849907432%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-http-error/index.html">HttpError</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>statusCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>errorBody<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">HTTP エラーレスポンス。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1215132680%2FClasslikes%2F-886418619" anchor-label="NetworkUnavailable" id="-1215132680%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-network-unavailable/index.html"><span>Network</span><wbr><span><span>Unavailable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1215132680%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-network-unavailable/index.html">NetworkUnavailable</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">ネットワーク利用不可による失敗。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="466949291%2FClasslikes%2F-886418619" anchor-label="NotFound" id="466949291%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-not-found/index.html"><span>Not</span><wbr><span><span>Found</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="466949291%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-not-found/index.html">NotFound</a> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">リソース未存在エラー。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1124279941%2FClasslikes%2F-886418619" anchor-label="ParseError" id="1124279941%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-parse-error/index.html"><span>Parse</span><wbr><span><span>Error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1124279941%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-parse-error/index.html">ParseError</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">API レスポンス解析失敗。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1129609529%2FClasslikes%2F-886418619" anchor-label="Timeout" id="-1129609529%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-timeout/index.html"><span><span>Timeout</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1129609529%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-timeout/index.html">Timeout</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">API 通信タイムアウト。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-210532538%2FClasslikes%2F-886418619" anchor-label="Unauthorized" id="-210532538%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unauthorized/index.html"><span><span>Unauthorized</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-210532538%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-unauthorized/index.html">Unauthorized</a> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">認証エラー。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2023256066%2FClasslikes%2F-886418619" anchor-label="Unknown" id="-2023256066%2FClasslikes%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unknown/index.html"><span><span>Unknown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2023256066%2FClasslikes%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-unknown/index.html">Unknown</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="index.html">ApiError</a></div><div class="brief "><p class="paragraph">既存分類に当てはまらない API 通信エラー。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1821266900%2FProperties%2F-886418619" anchor-label="cause" id="-1821266900%2FProperties%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cause.html"><span><span>cause</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1821266900%2FProperties%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="cause.html">cause</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">元になった例外。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2016497992%2FProperties%2F-886418619" anchor-label="code" id="-2016497992%2FProperties%2F-886418619" data-filterable-set=":core:network/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:network/release" data-filterable-set=":core:network/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="code.html"><span><span>code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2016497992%2FProperties%2F-886418619"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:network/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="code.html">code</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">API エラーを識別するコード。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SampleHomePresentationFacade</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    BaseArchitecture
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":app/release">release</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":app/release" data-filter=":app/release">
+                                <span class="checkbox--icon"></span>
+                                release
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    BaseArchitecture
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="app::jp.co.nsco.basearchitecture.feature.sample.presentation.home/SampleHomePresentationFacade///PointingToDeclaration//-865142711">
+  <div class="breadcrumbs"><a href="../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">jp.co.nsco.basearchitecture.feature.sample.presentation.home</a><span class="delimiter">/</span><span class="current">SampleHomePresentationFacade</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Sample</span><wbr><span>Home</span><wbr><span>Presentation</span><wbr><span><span>Facade</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SampleHomePresentationFacade</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>errorMapper<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.sample.presentation.common/-sample-ui-error-mapper/index.html">SampleUiErrorMapper</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>homeHeaderFormatter<span class="token operator">: </span><a href="../-sample-home-header-formatter/index.html">SampleHomeHeaderFormatter</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>operationLogMessageFactory<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.sample.presentation.common/-sample-operation-log-message-factory/index.html">SampleOperationLogMessageFactory</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>logger<span class="token operator">: </span><a href="../../../core/platform/jp.co.nsco.basearchitecture.core.logging/-app-logger/index.html">AppLogger</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Sample Home 画面の Presentation 補助部品をまとめる Facade。</p><p class="paragraph">SampleHomePresentationFacade は、Sample Home の ViewModel が利用する Presentation 層の補助クラスを束ねる。</p><p class="paragraph">■ 提供する責務 エラー表示Mapperの集約 Homeヘッダー表示Formatterの集約 操作ログ文言Factoryの集約 Sample Home の技術ログ出力契約の集約</p><p class="paragraph">■ 設計上の意図 ViewModel のコンストラクタ引数が増えすぎると、 依存関係の見通しが悪くなる。</p><p class="paragraph">Presentation 層の補助部品を Facade として束ねることで、 ViewModel は画面制御に必要な依存をまとまった単位で受け取れる。</p><p class="paragraph">■ 注意 本 Facade は Presentation 層の補助依存をまとめるだけであり、 UseCase 呼び出しや State 更新処理は持たない。</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="2020975629%2FConstructors%2F-865142711" anchor-label="SampleHomePresentationFacade" id="2020975629%2FConstructors%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sample-home-presentation-facade.html"><span>Sample</span><wbr><span>Home</span><wbr><span>Presentation</span><wbr><span><span>Facade</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2020975629%2FConstructors%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">errorMapper<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.sample.presentation.common/-sample-ui-error-mapper/index.html">SampleUiErrorMapper</a><span class="token punctuation">, </span></span><span class="parameter ">homeHeaderFormatter<span class="token operator">: </span><a href="../-sample-home-header-formatter/index.html">SampleHomeHeaderFormatter</a><span class="token punctuation">, </span></span><span class="parameter ">operationLogMessageFactory<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.sample.presentation.common/-sample-operation-log-message-factory/index.html">SampleOperationLogMessageFactory</a><span class="token punctuation">, </span></span><span class="parameter ">logger<span class="token operator">: </span><a href="../../../core/platform/jp.co.nsco.basearchitecture.core.logging/-app-logger/index.html">AppLogger</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-966794299%2FProperties%2F-865142711" anchor-label="errorMapper" id="-966794299%2FProperties%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="error-mapper.html"><span>error</span><wbr><span><span>Mapper</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-966794299%2FProperties%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="error-mapper.html">errorMapper</a><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.sample.presentation.common/-sample-ui-error-mapper/index.html">SampleUiErrorMapper</a></div><div class="brief "><p class="paragraph">AppError を Sample Feature 向け表示文言へ変換する Mapper。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1902883056%2FProperties%2F-865142711" anchor-label="homeHeaderFormatter" id="1902883056%2FProperties%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="home-header-formatter.html"><span>home</span><wbr><span>Header</span><wbr><span><span>Formatter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1902883056%2FProperties%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="home-header-formatter.html">homeHeaderFormatter</a><span class="token operator">: </span><a href="../-sample-home-header-formatter/index.html">SampleHomeHeaderFormatter</a></div><div class="brief "><p class="paragraph">Homeヘッダー表示値を整形する Formatter。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-122264772%2FProperties%2F-865142711" anchor-label="logger" id="-122264772%2FProperties%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="logger.html"><span><span>logger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-122264772%2FProperties%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="logger.html">logger</a><span class="token operator">: </span><a href="../../../core/platform/jp.co.nsco.basearchitecture.core.logging/-app-logger/index.html">AppLogger</a></div><div class="brief "><p class="paragraph">Sample Home の処理状況や失敗を記録する Logger。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-799752052%2FProperties%2F-865142711" anchor-label="operationLogMessageFactory" id="-799752052%2FProperties%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="operation-log-message-factory.html"><span>operation</span><wbr><span>Log</span><wbr><span>Message</span><wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-799752052%2FProperties%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="operation-log-message-factory.html">operationLogMessageFactory</a><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.sample.presentation.common/-sample-operation-log-message-factory/index.html">SampleOperationLogMessageFactory</a></div><div class="brief "><p class="paragraph">操作ログ保存用の表示文言を生成する Factory。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

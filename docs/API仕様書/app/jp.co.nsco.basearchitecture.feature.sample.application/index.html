@@ -1,0 +1,260 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>jp.co.nsco.basearchitecture.feature.sample.application</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    BaseArchitecture
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":app/release">release</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":app/release" data-filter=":app/release">
+                                <span class="checkbox--icon"></span>
+                                release
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    BaseArchitecture
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="app::jp.co.nsco.basearchitecture.feature.sample.application////PointingToDeclaration//-865142711">
+  <div class="breadcrumbs"><a href="../index.html">app</a><span class="delimiter">/</span><span class="current">jp.co.nsco.basearchitecture.feature.sample.application</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="57123836%2FClasslikes%2F-865142711" anchor-label="GetAvailableThemePresetsUseCase" id="57123836%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-get-available-theme-presets-use-case/index.html"><span>Get</span><wbr><span>Available</span><wbr><span>Theme</span><wbr><span>Presets</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="57123836%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-available-theme-presets-use-case/index.html">GetAvailableThemePresetsUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">themeRegistry<span class="token operator">: </span><a href="../../core/ui/jp.co.nsco.basearchitecture.core.ui.theme/-base-theme-registry/index.html">BaseThemeRegistry</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">利用可能なテーマID一覧を取得する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="547361634%2FClasslikes%2F-865142711" anchor-label="GetSampleHomeHeaderUseCase" id="547361634%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-get-sample-home-header-use-case/index.html"><span>Get</span><wbr><span>Sample</span><wbr><span>Home</span><wbr><span>Header</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="547361634%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-sample-home-header-use-case/index.html">GetSampleHomeHeaderUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dateTimeProvider<span class="token operator">: </span><a href="../../core/platform/jp.co.nsco.basearchitecture.core.time/-date-time-provider/index.html">DateTimeProvider</a><span class="token punctuation">, </span></span><span class="parameter ">greetingPolicy<span class="token operator">: </span><a href="../jp.co.nsco.basearchitecture.feature.sample.domain/-sample-greeting-policy/index.html">SampleGreetingPolicy</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sample Home 画面のヘッダー情報を取得する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1923754879%2FClasslikes%2F-865142711" anchor-label="ObserveSampleSettingsUseCase" id="1923754879%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-observe-sample-settings-use-case/index.html"><span>Observe</span><wbr><span>Sample</span><wbr><span>Settings</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1923754879%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-observe-sample-settings-use-case/index.html">ObserveSampleSettingsUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">repository<span class="token operator">: </span><a href="../jp.co.nsco.basearchitecture.feature.sample.domain/-sample-settings-repository/index.html">SampleSettingsRepository</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sample Feature の設定値を購読する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1060291630%2FClasslikes%2F-865142711" anchor-label="ObserveThemeSettingsUseCase" id="1060291630%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-observe-theme-settings-use-case/index.html"><span>Observe</span><wbr><span>Theme</span><wbr><span>Settings</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1060291630%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-observe-theme-settings-use-case/index.html">ObserveThemeSettingsUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">themeRepository<span class="token operator">: </span><span data-unresolved-link="jp.co.nsco.basearchitecture.core.theme/ThemeRepository///PointingToDeclaration/">ThemeRepository</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">アプリ全体のテーマ設定を購読する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-56071878%2FClasslikes%2F-865142711" anchor-label="UpdateSampleConfirmOnLoginEnabledUseCase" id="-56071878%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-update-sample-confirm-on-login-enabled-use-case/index.html"><span>Update</span><wbr><span>Sample</span><wbr><span>Confirm</span><wbr><span>On</span><wbr><span>Login</span><wbr><span>Enabled</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-56071878%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-update-sample-confirm-on-login-enabled-use-case/index.html">UpdateSampleConfirmOnLoginEnabledUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">repository<span class="token operator">: </span><a href="../jp.co.nsco.basearchitecture.feature.sample.domain/-sample-settings-repository/index.html">SampleSettingsRepository</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">ログイン時確認設定を更新する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1030977109%2FClasslikes%2F-865142711" anchor-label="UpdateSampleKeepCacheEnabledUseCase" id="1030977109%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-update-sample-keep-cache-enabled-use-case/index.html"><span>Update</span><wbr><span>Sample</span><wbr><span>Keep</span><wbr><span>Cache</span><wbr><span>Enabled</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1030977109%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-update-sample-keep-cache-enabled-use-case/index.html">UpdateSampleKeepCacheEnabledUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">repository<span class="token operator">: </span><a href="../jp.co.nsco.basearchitecture.feature.sample.domain/-sample-settings-repository/index.html">SampleSettingsRepository</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">キャッシュ保持設定を更新する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1565174439%2FClasslikes%2F-865142711" anchor-label="UpdateSampleNotificationEnabledUseCase" id="-1565174439%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-update-sample-notification-enabled-use-case/index.html"><span>Update</span><wbr><span>Sample</span><wbr><span>Notification</span><wbr><span>Enabled</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1565174439%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-update-sample-notification-enabled-use-case/index.html">UpdateSampleNotificationEnabledUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">repository<span class="token operator">: </span><a href="../jp.co.nsco.basearchitecture.feature.sample.domain/-sample-settings-repository/index.html">SampleSettingsRepository</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">通知設定を更新する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="993895185%2FClasslikes%2F-865142711" anchor-label="UpdateThemeIdUseCase" id="993895185%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-update-theme-id-use-case/index.html"><span>Update</span><wbr><span>Theme</span><wbr><span>Id</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="993895185%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-update-theme-id-use-case/index.html">UpdateThemeIdUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">themeRepository<span class="token operator">: </span><span data-unresolved-link="jp.co.nsco.basearchitecture.core.theme/ThemeRepository///PointingToDeclaration/">ThemeRepository</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">アプリのテーマIDを更新する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2043094887%2FClasslikes%2F-865142711" anchor-label="UpdateThemeModeUseCase" id="-2043094887%2FClasslikes%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-update-theme-mode-use-case/index.html"><span>Update</span><wbr><span>Theme</span><wbr><span>Mode</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2043094887%2FClasslikes%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-update-theme-mode-use-case/index.html">UpdateThemeModeUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">themeRepository<span class="token operator">: </span><span data-unresolved-link="jp.co.nsco.basearchitecture.core.theme/ThemeRepository///PointingToDeclaration/">ThemeRepository</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">アプリのテーマモードを更新する UseCase。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

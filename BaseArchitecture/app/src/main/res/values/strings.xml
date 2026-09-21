@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        Application
+
+        アプリ全体で利用する基本文言。
+    -->
+    <string name="app_name">BaseArchitecture</string>
+
+
+    <!--
+        Sample / Home
+
+        Sample Home 画面で利用するタイトル・挨拶文言。
+    -->
+    <string name="sample_home_title">Home</string>
+    <string name="sample_home_greeting_morning">おはようございます！</string>
+    <string name="sample_home_greeting_afternoon">こんにちは</string>
+    <string name="sample_home_greeting_evening">こんばんは</string>
+    <string name="sample_home_greeting_subtitle">本日もよろしくお願いします。</string>
+
+
+    <!--
+        Sample / Common Navigation
+
+        Sample Feature 共通の BottomNavigation / Drawer 文言。
+    -->
+    <string name="sample_bottom_history">履歴</string>
+    <string name="sample_bottom_home">Home</string>
+    <string name="sample_bottom_settings">設定</string>
+    <string name="sample_drawer_title">メニュー</string>
+    <string name="sample_drawer_privacy_policy">プライバシーポリシー</string>
+    <string name="sample_drawer_terms">利用規約</string>
+    <string name="sample_drawer_licenses">ライセンス</string>
+    <string name="sample_drawer_version">バージョン情報</string>
+
+
+    <!--
+        Sample / Common Dialog
+
+        Sample Feature 共通の Dialog 文言。
+    -->
+    <string name="sample_dialog_ok">OK</string>
+
+
+    <!--
+        Sample / Validation
+
+        Sample 入力検証で利用する表示文言。
+        FieldValidationError から UI 表示へ変換する際に利用する。
+    -->
+    <string name="sample_validation_name_required">Name is required</string>
+    <string name="sample_validation_name_too_long">Name must be 20 characters or less</string>
+
+
+    <!--
+        Sample / Error Title
+
+        エラー種別ごとの Dialog / Alert タイトル。
+    -->
+    <string name="sample_error_title_input">Input error</string>
+    <string name="sample_error_title_business">Business error</string>
+    <string name="sample_error_title_storage">Storage error</string>
+    <string name="sample_error_title_network">Network error</string>
+    <string name="sample_error_title_api">API error</string>
+    <string name="sample_error_title_response">Response error</string>
+    <string name="sample_error_title_unexpected">Unexpected error</string>
+
+
+    <!--
+        Sample / Error Message
+
+        AppError を画面表示用メッセージへ変換する際に利用する文言。
+    -->
+    <string name="sample_error_message_business">The operation could not be completed.</string>
+    <string name="sample_error_message_storage">Failed to access local storage.</string>
+    <string name="sample_error_message_network">Please check your network connection.</string>
+    <string name="sample_error_message_api">API request failed.</string>
+    <string name="sample_error_message_response">Invalid response was returned.</string>
+    <string name="sample_error_message_unexpected">Unexpected error occurred.</string>
+    <string name="sample_error_support_status_code">statusCode=%1$d</string>
+
+
+    <!--
+        Sample / Settings
+
+        Sample Settings 画面で利用するセクション名・設定項目文言。
+    -->
+    <string name="sample_settings_title">設定</string>
+    <string name="sample_settings_section_general">一般</string>
+    <string name="sample_settings_section_security">セキュリティ</string>
+    <string name="sample_settings_section_data">データと保存</string>
+    <string name="sample_settings_section_display">表示設定</string>
+    <string name="sample_settings_notification_title">通知</string>
+    <string name="sample_settings_notification_description">タスクの期限や重要な更新を通知します</string>
+    <string name="sample_settings_confirm_login_title">ログイン時に確認</string>
+    <string name="sample_settings_confirm_login_description">新しいデバイスでのログイン時に確認を行います</string>
+    <string name="sample_settings_keep_cache_title">キャッシュを保持</string>
+    <string name="sample_settings_keep_cache_description">再表示を高速化するためにキャッシュを保持します</string>
+    <string name="sample_settings_theme_mode_title">テーマモード</string>
+    <string name="sample_settings_theme_preset_title">テーマプリセット</string>
+
+
+    <!--
+        Sample / Theme
+
+        Sample Settings 画面のテーマ選択肢で利用する文言。
+    -->
+    <string name="sample_theme_mode_system">システム設定に従う</string>
+    <string name="sample_theme_mode_light">ライト</string>
+    <string name="sample_theme_mode_dark">ダーク</string>
+    <string name="sample_theme_preset_default">標準</string>
+    <string name="sample_theme_preset_default_description">シンプルな標準テーマです。</string>
+    <string name="sample_theme_preset_dashboard">ダッシュボード</string>
+    <string name="sample_theme_preset_dashboard_description">カードと青系アクセントを使ったテーマです。</string>
+    <string name="sample_theme_preset_custom_description">カスタムテーマ</string>
+
+
+    <!--
+        Sample / Settings Result
+
+        Sample Settings 画面の保存結果・エラー表示文言。
+    -->
+    <string name="sample_settings_save_success">設定を保存しました。</string>
+    <string name="sample_settings_error_title">設定エラー</string>
+
+
+    <!--
+        Sample / History
+
+        Sample History 画面で利用するタイトル・検索・フィルタ・空表示文言。
+    -->
+    <string name="sample_history_title">履歴</string>
+    <string name="sample_history_search_placeholder">履歴を検索</string>
+    <string name="sample_history_filter_all">すべて</string>
+    <string name="sample_history_filter_action">操作</string>
+    <string name="sample_history_filter_setting">設定</string>
+    <string name="sample_history_filter_error">エラー</string>
+    <string name="sample_history_group_today">今日</string>
+    <string name="sample_history_group_yesterday">昨日</string>
+    <string name="sample_history_empty">表示できる履歴がありません</string>
+    <string name="sample_history_all_loaded">すべての履歴を表示しています</string>
+    <string name="sample_history_error_title">履歴エラー</string>
+
+
+    <!--
+        Sample / Operation Log
+
+        操作ログ保存時に利用するタイトル・概要文言。
+    -->
+    <string name="sample_log_home_displayed_title">Home画面を表示しました</string>
+    <string name="sample_log_home_displayed_summary">ダッシュボードを表示</string>
+    <string name="sample_log_setting_changed_title">設定を変更しました</string>
+    <string name="sample_log_notification_enabled">通知設定を ON にしました</string>
+    <string name="sample_log_notification_disabled">通知設定を OFF にしました</string>
+    <string name="sample_log_confirm_login_enabled">ログイン時確認を ON にしました</string>
+    <string name="sample_log_confirm_login_disabled">ログイン時確認を OFF にしました</string>
+    <string name="sample_log_keep_cache_enabled">キャッシュ保持を ON にしました</string>
+    <string name="sample_log_keep_cache_disabled">キャッシュ保持を OFF にしました</string>
+    <string name="sample_log_error_title">エラーが発生しました</string>
+    <string name="sample_log_save_error_summary">保存処理に失敗しました</string>
+    <string name="sample_log_settings_error_summary">設定保存に失敗しました</string>
+
+
+    <!--
+        License / List
+
+        ライセンス一覧画面で利用する文言。
+    -->
+    <string name="license_list_title">ライセンス</string>
+    <string name="license_search_placeholder">ライセンスを検索</string>
+    <string name="license_list_info_footer">このアプリは上記のオープンソースライブラリを使用しています。各ライブラリのライセンス全文は、詳細画面から確認できます。</string>
+    <string name="license_empty">表示できるライセンスがありません</string>
+
+
+    <!--
+        License / Detail
+
+        ライセンス詳細画面で利用する文言。
+    -->
+    <string name="license_detail_title">ライセンス詳細</string>
+    <string name="license_type_label">ライセンス種別</string>
+    <string name="license_copyright_label">著作権</string>
+    <string name="license_detail_info_footer">ライセンス本文は取得した内容をそのまま表示しています。</string>
+    <string name="license_unknown">不明</string>
+
+
+    <!--
+        License / Error
+
+        ライセンス情報取得・表示時のエラー文言。
+    -->
+    <string name="license_error_title">ライセンスエラー</string>
+    <string name="license_error_invalid_argument">ライセンスIDが不正です。</string>
+    <string name="license_error_not_found">指定されたライセンス情報が見つかりません。</string>
+    <string name="license_error_unexpected">ライセンス情報の取得に失敗しました。</string>
+
+
+    <!--
+        Legal / Document
+
+        プライバシーポリシー・利用規約などの文書表示画面で利用する文言。
+    -->
+    <string name="legal_privacy_policy_title">プライバシーポリシー</string>
+    <string name="legal_terms_of_service_title">利用規約</string>
+    <string name="legal_retry">再試行</string>
+
+
+    <!--
+        Legal / Error
+
+        Legal 文書読み込み・表示時のエラー文言。
+    -->
+    <string name="legal_error_title">文書表示エラー</string>
+    <string name="legal_error_read_failed">文書の読み込みに失敗しました。</string>
+    <string name="legal_error_unexpected">文書の表示中に予期しないエラーが発生しました。</string>
+
+
+    <!--
+        Version Info / Basic
+
+        バージョン情報画面の基本表示文言。
+    -->
+    <string name="version_info_title">バージョン情報</string>
+    <string name="version_info_channel_format">公開チャネル：%1$s</string>
+    <string name="version_info_current_section">現在のバージョン</string>
+    <string name="version_info_current_version">現在のバージョン</string>
+    <string name="version_info_latest_version">最新バージョン</string>
+    <string name="version_info_build_number">ビルド番号</string>
+    <string name="version_info_last_checked_at">最終確認日時</string>
+
+
+    <!--
+        Version Info / Status
+
+        バージョン確認状態ごとのタイトル・説明文言。
+    -->
+    <string name="version_info_status_latest_title">最新版です</string>
+    <string name="version_info_status_latest_message">現在利用中のアプリは最新版です。</string>
+    <string name="version_info_status_update_available_title">最新版ではありません</string>
+    <string name="version_info_status_update_available_message">新しいバージョンが利用できます。Google Playから最新版を確認してください。</string>
+    <string name="version_info_status_check_failed_title">バージョン確認に失敗しました</string>
+    <string name="version_info_status_check_failed_message">通信状態を確認して再度お試しください。</string>
+
+
+    <!--
+        Version Info / Action
+
+        バージョン情報画面の操作ボタン文言。
+    -->
+    <string name="version_info_open_store">Google Playで更新</string>
+    <string name="version_info_open_app_info">アプリ情報ページを開く</string>
+    <string name="version_info_retry">再確認</string>
+
+
+    <!--
+        Version Info / Error
+
+        バージョン情報取得・外部ページ起動時のエラー文言。
+    -->
+    <string name="version_info_error_title">バージョン情報エラー</string>
+    <string name="version_info_error_load_failed">バージョン情報の読み込みに失敗しました。</string>
+    <string name="version_info_external_open_error_title">外部ページを開けませんでした</string>
+    <string name="version_info_external_open_error_message">端末の状態を確認して再度お試しください。</string>
+
+</resources>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>GetVersionInfoUseCase</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    BaseArchitecture
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":app/release">release</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":app/release" data-filter=":app/release">
+                                <span class="checkbox--icon"></span>
+                                release
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    BaseArchitecture
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="app::jp.co.nsco.basearchitecture.feature.versioninfo.application/GetVersionInfoUseCase///PointingToDeclaration//-865142711">
+  <div class="breadcrumbs"><a href="../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">jp.co.nsco.basearchitecture.feature.versioninfo.application</a><span class="delimiter">/</span><span class="current">GetVersionInfoUseCase</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Get</span><wbr><span>Version</span><wbr><span>Info</span><wbr><span>Use</span><wbr><span><span>Case</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">GetVersionInfoUseCase</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">appInfoProvider<span class="token operator">: </span><a href="../../../core/platform/jp.co.nsco.basearchitecture.core.appinfo/-app-info-provider/index.html">AppInfoProvider</a><span class="token punctuation">, </span></span><span class="parameter ">latestVersionRepository<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.versioninfo.domain/-latest-version-repository/index.html">LatestVersionRepository</a><span class="token punctuation">, </span></span><span class="parameter ">externalLinksProvider<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.versioninfo.domain/-app-external-links-provider/index.html">AppExternalLinksProvider</a><span class="token punctuation">, </span></span><span class="parameter ">appClock<span class="token operator">: </span><a href="../../../core/platform/jp.co.nsco.basearchitecture.core.time/-app-clock/index.html">AppClock</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">バージョン情報を取得する UseCase。</p><p class="paragraph">GetVersionInfoUseCase は、アプリ自身のバージョン情報、最新バージョン情報、 外部リンク情報、最終確認時刻を組み合わせて VersionInfo を生成する。</p><p class="paragraph">■ 提供する責務 アプリ情報の取得 最新バージョン情報の取得 バージョン確認状態の判定 外部リンク情報の取得 VersionInfo の生成</p><p class="paragraph">■ 設計上の意図 Presentation 層が AppInfoProvider や LatestVersionRepository、 外部リンク生成処理を個別に呼び出さないようにする。</p><p class="paragraph">画面に必要なバージョン情報を UseCase で組み立てることで、 ViewModel は「バージョン情報を取得する」というアプリケーション操作だけを扱える。</p><p class="paragraph">アプリ情報の取得に失敗した場合は、バージョン情報画面の前提情報が不足するため、 AppResult.Failure として呼び出し側へ返す。</p><p class="paragraph">一方、最新バージョン確認に失敗した場合は、 現在のアプリ情報自体は表示可能なため VersionCheckStatus.CheckFailed として扱い、 VersionInfo の生成は継続する。</p><p class="paragraph">■ 注意 appName / description / currentVersionName / buildNumber は現状固定値で設定している。 実案件では AppInfoProvider や BuildConfig、remote config などから取得する設計へ 拡張することを想定する。</p><p class="paragraph">LatestVersionRepository / AppExternalLinksProvider は domain 層の契約に依存し、 実装は data 層で提供する。</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>app</span><wbr><span>Info</span><wbr><span><span>Provider</span></span></u></div></span></div><div><div class="title"><p class="paragraph">アプリ自身のバージョン・パッケージ情報を取得する Provider。</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>latest</span><wbr><span>Version</span><wbr><span><span>Repository</span></span></u></div></span></div><div><div class="title"><p class="paragraph">最新バージョン情報を取得する Repository。</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>external</span><wbr><span>Links</span><wbr><span><span>Provider</span></span></u></div></span></div><div><div class="title"><p class="paragraph">アプリ関連の外部リンクを生成する Provider。</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>app</span><wbr><span><span>Clock</span></span></u></div></span></div><div><div class="title"><p class="paragraph">現在時刻を取得する Clock。</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-936380741%2FConstructors%2F-865142711" anchor-label="GetVersionInfoUseCase" id="-936380741%2FConstructors%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-get-version-info-use-case.html"><span>Get</span><wbr><span>Version</span><wbr><span>Info</span><wbr><span>Use</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-936380741%2FConstructors%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">appInfoProvider<span class="token operator">: </span><a href="../../../core/platform/jp.co.nsco.basearchitecture.core.appinfo/-app-info-provider/index.html">AppInfoProvider</a><span class="token punctuation">, </span></span><span class="parameter ">latestVersionRepository<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.versioninfo.domain/-latest-version-repository/index.html">LatestVersionRepository</a><span class="token punctuation">, </span></span><span class="parameter ">externalLinksProvider<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.feature.versioninfo.domain/-app-external-links-provider/index.html">AppExternalLinksProvider</a><span class="token punctuation">, </span></span><span class="parameter ">appClock<span class="token operator">: </span><a href="../../../core/platform/jp.co.nsco.basearchitecture.core.time/-app-clock/index.html">AppClock</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1504046839%2FFunctions%2F-865142711" anchor-label="invoke" id="1504046839%2FFunctions%2F-865142711" data-filterable-set=":app/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":app/release" data-filterable-set=":app/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="invoke.html"><span><span>invoke</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1504046839%2FFunctions%2F-865142711"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app/release"><div class="symbol monospace"><span class="token keyword">suspend operator </span><span class="token keyword">fun </span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../core/foundation/jp.co.nsco.basearchitecture.core.result/-app-result/index.html">AppResult</a><span class="token operator">&lt;</span><a href="../../jp.co.nsco.basearchitecture.feature.versioninfo.domain/-version-info/index.html">VersionInfo</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">バージョン情報を取得する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

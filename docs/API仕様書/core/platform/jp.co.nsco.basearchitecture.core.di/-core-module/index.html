@@ -1,0 +1,310 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CoreModule</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../../index.html" tabindex="1">
+                    BaseArchitecture
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":core:platform/release">release</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:platform/release" data-filter=":core:platform/release">
+                                <span class="checkbox--icon"></span>
+                                release
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    BaseArchitecture
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="platform::jp.co.nsco.basearchitecture.core.di/CoreModule///PointingToDeclaration//-1797982052">
+  <div class="breadcrumbs"><a href="../../index.html">platform</a><span class="delimiter">/</span><a href="../index.html">jp.co.nsco.basearchitecture.core.di</a><span class="delimiter">/</span><span class="current">CoreModule</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Core</span><wbr><span><span>Module</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Module///PointingToDeclaration/"><span class="token annotation builtin">Module</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">CoreModule</a></div><p class="paragraph">Core 層の共通依存を DI コンテナへ登録する Hilt Module。</p><p class="paragraph">本 Module は、Core 層で定義している抽象契約に対して、 Android 環境で利用する標準実装を紐付ける責務を持つ。</p><p class="paragraph">■ 提供する責務 文字列リソース取得契約の登録 Raw リソース読取契約の登録 Coroutine Dispatcher 契約の登録 アプリケーション単位 CoroutineScope 契約の登録 Logging 契約の登録 Logging 共通設定の登録 Logging 初期化契約の登録 日時取得契約の登録 Clock 契約の登録 ライセンス情報取得契約の登録 アプリ情報取得契約の登録 外部 URI 起動契約の登録</p><p class="paragraph">■ 設計上の意図 利用側は AndroidStringProvider や AndroidAppLogger などの具象クラスに依存せず、 StringProvider / AppLogger などの契約に依存する。</p><p class="paragraph">これにより、実装差し替え、Unit テスト、環境別実装の切り替えを行いやすくする。</p><p class="paragraph">■ 注意 本 Module には、Core の標準実装として完結する依存登録のみを置く。</p><p class="paragraph">DataStore のように、保存ファイル名や生成スコープなど アプリ構成に依存する依存登録は app 側 Module に配置する。</p><p class="paragraph">Feature 固有の Repository / DAO / Gateway などをここに追加しない。 CoreModule が Feature を知り始めると、Core が共通基盤ではなく アプリ固有の便利置き場になってしまうため。</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="725121136%2FConstructors%2F-1797982052" anchor-label="CoreModule" id="725121136%2FConstructors%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-core-module.html"><span>Core</span><wbr><span><span>Module</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="725121136%2FConstructors%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="824207036%2FFunctions%2F-1797982052" anchor-label="bindAppClock" id="824207036%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-app-clock.html"><span>bind</span><wbr><span>App</span><wbr><span><span>Clock</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="824207036%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-app-clock.html"><span class="token function">bindAppClock</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.time/-system-app-clock/index.html">SystemAppClock</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.time/-app-clock/index.html">AppClock</a></div><div class="brief "><p class="paragraph">現在時刻取得契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1378351278%2FFunctions%2F-1797982052" anchor-label="bindAppInfoProvider" id="1378351278%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-app-info-provider.html"><span>bind</span><wbr><span>App</span><wbr><span>Info</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1378351278%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-app-info-provider.html"><span class="token function">bindAppInfoProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.appinfo/-android-app-info-provider/index.html">AndroidAppInfoProvider</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.appinfo/-app-info-provider/index.html">AppInfoProvider</a></div><div class="brief "><p class="paragraph">アプリ情報取得契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1995978462%2FFunctions%2F-1797982052" anchor-label="bindAppLogger" id="1995978462%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-app-logger.html"><span>bind</span><wbr><span>App</span><wbr><span><span>Logger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1995978462%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-app-logger.html"><span class="token function">bindAppLogger</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.logging/-android-app-logger/index.html">AndroidAppLogger</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.logging/-app-logger/index.html">AppLogger</a></div><div class="brief "><p class="paragraph">アプリログ出力契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-216344304%2FFunctions%2F-1797982052" anchor-label="bindAppLoggingConfiguration" id="-216344304%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-app-logging-configuration.html"><span>bind</span><wbr><span>App</span><wbr><span>Logging</span><wbr><span><span>Configuration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-216344304%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-app-logging-configuration.html"><span class="token function">bindAppLoggingConfiguration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.logging/-default-app-logging-configuration/index.html">DefaultAppLoggingConfiguration</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.logging/-app-logging-configuration/index.html">AppLoggingConfiguration</a></div><div class="brief "><p class="paragraph">ログ共通設定契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1181887938%2FFunctions%2F-1797982052" anchor-label="bindAppLoggingInitializer" id="1181887938%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-app-logging-initializer.html"><span>bind</span><wbr><span>App</span><wbr><span>Logging</span><wbr><span><span>Initializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1181887938%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-app-logging-initializer.html"><span class="token function">bindAppLoggingInitializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.logging/-timber-app-logging-initializer/index.html">TimberAppLoggingInitializer</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.logging/-app-logging-initializer/index.html">AppLoggingInitializer</a></div><div class="brief "><p class="paragraph">ログ出力基盤初期化契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-669765759%2FFunctions%2F-1797982052" anchor-label="bindCoroutineScopeProvider" id="-669765759%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-coroutine-scope-provider.html"><span>bind</span><wbr><span>Coroutine</span><wbr><span>Scope</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-669765759%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-coroutine-scope-provider.html"><span class="token function">bindCoroutineScopeProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.coroutine/-app-coroutine-scope-provider/index.html">AppCoroutineScopeProvider</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.coroutine/-coroutine-scope-provider/index.html">CoroutineScopeProvider</a></div><div class="brief "><p class="paragraph">アプリケーション単位 CoroutineScope 契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2820732%2FFunctions%2F-1797982052" anchor-label="bindDateTimeProvider" id="2820732%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-date-time-provider.html"><span>bind</span><wbr><span>Date</span><wbr><span>Time</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2820732%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-date-time-provider.html"><span class="token function">bindDateTimeProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.time/-app-date-time-provider/index.html">AppDateTimeProvider</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.time/-date-time-provider/index.html">DateTimeProvider</a></div><div class="brief "><p class="paragraph">日時取得契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-114507285%2FFunctions%2F-1797982052" anchor-label="bindDispatcherProvider" id="-114507285%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-dispatcher-provider.html"><span>bind</span><wbr><span>Dispatcher</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-114507285%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-dispatcher-provider.html"><span class="token function">bindDispatcherProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.coroutine/-app-dispatcher-provider/index.html">AppDispatcherProvider</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.coroutine/-dispatcher-provider/index.html">DispatcherProvider</a></div><div class="brief "><p class="paragraph">CoroutineDispatcher 提供契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1938607296%2FFunctions%2F-1797982052" anchor-label="bindExternalUriOpener" id="1938607296%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-external-uri-opener.html"><span>bind</span><wbr><span>External</span><wbr><span>Uri</span><wbr><span><span>Opener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1938607296%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-external-uri-opener.html"><span class="token function">bindExternalUriOpener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.external/-android-external-uri-opener/index.html">AndroidExternalUriOpener</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.external/-external-uri-opener/index.html">ExternalUriOpener</a></div><div class="brief "><p class="paragraph">外部 URI 起動契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1569796801%2FFunctions%2F-1797982052" anchor-label="bindRawResourceReader" id="1569796801%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-raw-resource-reader.html"><span>bind</span><wbr><span>Raw</span><wbr><span>Resource</span><wbr><span><span>Reader</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1569796801%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-raw-resource-reader.html"><span class="token function">bindRawResourceReader</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.resource/-android-raw-resource-reader/index.html">AndroidRawResourceReader</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.resource/-raw-resource-reader/index.html">RawResourceReader</a></div><div class="brief "><p class="paragraph">Raw リソース読取契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1879306893%2FFunctions%2F-1797982052" anchor-label="bindStringProvider" id="1879306893%2FFunctions%2F-1797982052" data-filterable-set=":core:platform/release"></a>
+          <div class="table-row table-row_content" data-filterable-current=":core:platform/release" data-filterable-set=":core:platform/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-string-provider.html"><span>bind</span><wbr><span>String</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1879306893%2FFunctions%2F-1797982052"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:platform/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="dagger/Binds///PointingToDeclaration/"><span class="token annotation builtin">Binds</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="bind-string-provider.html"><span class="token function">bindStringProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">impl<span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.resource/-android-string-provider/index.html">AndroidStringProvider</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../jp.co.nsco.basearchitecture.core.resource/-string-provider/index.html">StringProvider</a></div><div class="brief "><p class="paragraph">文字列リソース取得契約の実装を登録する。</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
