@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- アプリ全体で利用する基本文言。 -->
+    <string name="app_name">BaseArchitecture Template</string>
+
+    <!--
+        Starter画面
+
+        Templateの起動確認用に使用する文言。
+        実案件では、画面固有の文言をFeature単位で追加する。
+    -->
+    <string name="template_starter_title">Starter</string>
+    <string name="template_starter_message">Template is ready.</string>
+
+</resources>
