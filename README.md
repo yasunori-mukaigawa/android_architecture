@@ -1,0 +1,2 @@
+# android_architecture
+Androidアプリのベースアーキテクチャとサンプルアプリ
