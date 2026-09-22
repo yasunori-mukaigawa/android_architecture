@@ -5,15 +5,6 @@
     <string name="app_name">BaseArchitecture Template</string>
 
     <!--
-        Starter画面
-
-        Templateの起動確認用に使用する文言。
-        実案件では、画面固有の文言をFeature単位で追加する。
-    -->
-    <string name="template_starter_title">Starter</string>
-    <string name="template_starter_message">Template is ready.</string>
-
-    <!--
         HANDS-001 Route / Placeholder画面
 
         ハンズオンの初期段階で利用する仮表示文言。

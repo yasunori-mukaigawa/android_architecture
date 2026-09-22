@@ -2,13 +2,13 @@
 
 新規Android案件の開始点として利用する最小構成です。
 
-Android / Kotlin / Jetpack Compose / Hilt を前提に、業務機能を持たないStarter画面と、再利用するCore moduleだけを含みます。
+Android / Kotlin / Jetpack Compose / Hilt を前提に、Sample FeatureのNavigation殻と、再利用するCore moduleを含みます。
 
 ## Module構成
 
 | Module | 主な責務 |
 | --- | --- |
-| `:app` | Application、AppNavHost、Starter、案件Feature |
+| `:app` | Application、AppNavHost、Sample Feature、案件Feature |
 | `:core:foundation` | `AppResult`、`AppError`、Validation、共通契約 |
 | `:core:presentation` | `UiState`、`UiEvent`、`UiMessage`、`UiEffect`、`Reducer`、`BaseViewModel` |
 | `:core:platform` | Resource、Coroutine、Logger、DateTime、AppInfoなどのAndroid補助 |
@@ -17,11 +17,11 @@ Android / Kotlin / Jetpack Compose / Hilt を前提に、業務機能を持た�
 案件で必要になった場合だけ、DataStore / Room、API通信、OSS License、Markdown表示などのmoduleや実装を追加します。
 TemplateへSampleAppの業務機能、Fake Repository、画面固有の永続化や通信実装は戻しません。
 
-## 初期画面
+## Sample Feature
 
-`app/src/main/java/jp/co/nsco/basearchitecture/feature/starter/presentation` に、起動確認用のStarter画面を配置しています。
+`app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation` に、Sample FeatureのHome、履歴、設定と共通Navigation部品を配置しています。
 
-StarterはViewModelやUseCaseを持たない最小画面です。案件開始時に、要件に応じたFeatureのRoute / Screen / ViewModelへ置き換えてください。
+このブランチでは、01-sample-shellで作成したNavigation構成を引き継ぎ、02-core-foundation-presentationでCoreの共通契約を追加します。
 
 ## Coreの利用
 

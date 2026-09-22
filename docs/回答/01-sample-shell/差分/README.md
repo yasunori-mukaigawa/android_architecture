@@ -13,6 +13,7 @@ Diffは手作業で作成せず、各Commitとその親Commitの差分から生�
 | `Step05-NavigationDrawer接続.diff` | `9e87b1c` |
 | `Step06-共通レイアウト統合.diff` | `8deded2` |
 | `Step07-BackStackと自己レビュー.diff` | `207e351` |
+| `Step08-Template Starter整理.diff` | `72e03f1` |
 
 ## 確認方法
 

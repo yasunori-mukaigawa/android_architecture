@@ -16,6 +16,10 @@
 | 06 | 共通レイアウト統合 | 完了 |
 | 07 | BackStack確認と自己レビュー | 完了 |
 
+## 最終整理
+
+Sample Shellを起動入口として接続したため、Templateの起動確認用`feature/starter`とStarter専用Resourceを削除した。Starter画面はSampleAppの構成に含まれないため、01の完了時点で残さない。
+
 ## 実装方針
 
 - 回答ソースは `BaseArchitecture` 配下に配置する
