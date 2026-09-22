@@ -21,6 +21,7 @@ Android / Kotlin / Jetpack Compose / Hilt を利用した、新規Android案件�
 - Templateに含まれる最小構成
 - 追加するOptional moduleの判断
 - 設計思想・適用チェックリストの参照先
+- SampleApp相当へ段階的に実装するハンズオン課題
 - 新規案件を開始するときの初期作業
 
 ### 📌 詳細設計を確認したいとき
@@ -51,6 +52,7 @@ android_architecture/
 │  └─ gradle/               # Version CatalogとGradle設定
 ├─ docs/
 │  ├─ 設計思想/              # 共通思想とAndroid適用ルール
+│  ├─ ハンズオン/            # SampleApp相当へ段階的に構築する課題
 │  └─ Template適用チェックリスト.md
 └─ README.md
 ```
@@ -97,6 +99,7 @@ Reducer
 | 技術に依存しない設計判断 | [共通設計思想ガイド](docs/設計思想/共通設計思想ガイド.md) |
 | Androidでの具体的な実装ルール | [Androidカスタマイズ設計書](docs/設計思想/Androidカスタマイズ設計書.md) |
 | Template適用時の初期作業 | [Template適用チェックリスト](docs/Template適用チェックリスト.md) |
+| SampleApp相当の実装演習 | [ハンズオン課題](docs/ハンズオン/README.md) |
 
 SampleAppに含まれる要件定義書、基本設計書、詳細設計書、画面キャプチャは、Templateへは持ち込みません。案件開始後に案件用の資料として作成します。
 
