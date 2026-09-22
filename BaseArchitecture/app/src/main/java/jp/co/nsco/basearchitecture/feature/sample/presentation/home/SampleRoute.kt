@@ -2,6 +2,7 @@ package jp.co.nsco.basearchitecture.feature.sample.presentation.home
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
 import jp.co.nsco.basearchitecture.R
 
 /**
@@ -11,7 +12,7 @@ import jp.co.nsco.basearchitecture.R
  * StatelessなScreenへ渡す責務だけを持つ。
  */
 @Composable
-fun SampleRoute() {
+fun SampleRoute(navController: NavController) {
     SampleScreen(
         title = stringResource(R.string.sample_home_title),
         message = stringResource(R.string.sample_home_placeholder)

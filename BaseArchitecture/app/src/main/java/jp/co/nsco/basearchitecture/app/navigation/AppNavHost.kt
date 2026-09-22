@@ -4,8 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import jp.co.nsco.basearchitecture.feature.starter.presentation.starterGraph
-import jp.co.nsco.basearchitecture.feature.starter.presentation.StarterRoutes
+import jp.co.nsco.basearchitecture.feature.legal.presentation.legalDocumentGraph
+import jp.co.nsco.basearchitecture.feature.license.presentation.common.licenseGraph
+import jp.co.nsco.basearchitecture.feature.sample.presentation.common.SampleRoutes
+import jp.co.nsco.basearchitecture.feature.sample.presentation.common.sampleGraph
+import jp.co.nsco.basearchitecture.feature.versioninfo.presentation.versionInfoGraph
 
 /**
  * アプリ全体の Navigation Host。
@@ -23,8 +26,11 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = StarterRoutes.Start
+        startDestination = SampleRoutes.List
     ) {
-        starterGraph()
+        sampleGraph(navController = navController)
+        licenseGraph(navController = navController)
+        legalDocumentGraph(navController = navController)
+        versionInfoGraph(navController = navController)
     }
 }
