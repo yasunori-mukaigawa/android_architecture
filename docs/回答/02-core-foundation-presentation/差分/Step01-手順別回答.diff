@@ -1,0 +1,302 @@
+diff --git a/docs/回答/02-core-foundation-presentation/README.md b/docs/回答/02-core-foundation-presentation/README.md
+new file mode 100644
+index 0000000..1c868a6
+--- /dev/null
++++ b/docs/回答/02-core-foundation-presentation/README.md
+@@ -0,0 +1,31 @@
++# HANDS-002 回答: Core Foundation / Presentation
++
++## 回答の位置づけ
++
++この回答は、`solution/01-sample-shell`を起点に、Templateへあらかじめ含まれているCore Foundation / Presentationの責務と利用契約を確認したものです。
++
++Starter画面とStarter専用ResourceはHANDS-001の完了時に削除済みです。このStepではCore実装を再作成せず、Feature実装者が既存契約を正しく利用できるように、手順ごとに確認結果と設計意図を整理しています。
++
++## 手順別回答
++
++- [手順01 Module境界と依存方向](./手順/01-Module境界と依存方向_回答.md)
++- [手順02 Result / Error / Validation](./手順/02-ResultErrorValidationを読む_回答.md)
++- [手順03 Presentation契約](./手順/03-Presentation契約を読む_回答.md)
++- [手順04 BaseViewModelのEvent Queue](./手順/04-BaseViewModelのEventQueueを確認_回答.md)
++- [手順05 SampleAppとの差分と自己レビュー](./手順/05-SampleAppとの差分確認と自己レビュー_回答.md)
++
++## 共通結論
++
++- `core:foundation`はAndroid UIやNavigationを知らない共通契約を保持する
++- `core:presentation`はFoundationの契約を利用して画面状態と入力処理の基盤を提供する
++- `UiEvent`は入力、`UiMessage`はState更新理由、`UiState`は現在状態、`UiEffect`は単発処理として分離する
++- Reducerは副作用を持たず、StateとMessageから次のStateだけを生成する
++- BaseViewModelはEventをChannelで順次処理するが、LoadingやError変換を自動化しない
++- ViewModelへ`NavController`や`Context`を渡さない
++
++## 実装変更について
++
++このStepでは、`core:foundation`と`core:presentation`の本番ソースを変更していません。HANDS-001でSampleAppに存在しないStarterを整理済みであり、ここでは既存CoreとSampleAppの一致を確認しています。
++
++各回答CommitとDiffは[Step別Diff](./差分/README.md)から確認できます。
++
+diff --git a/docs/回答/02-core-foundation-presentation/レビュー結果.md b/docs/回答/02-core-foundation-presentation/レビュー結果.md
+new file mode 100644
+index 0000000..5612ce2
+--- /dev/null
++++ b/docs/回答/02-core-foundation-presentation/レビュー結果.md
+@@ -0,0 +1,33 @@
++# HANDS-002 レビュー結果
++
++## 手順別確認
++
++| 手順 | 確認結果 |
++|---|---|
++| 01 Module境界と依存方向 | Foundation、Presentation、Appの依存方向と責務を確認した |
++| 02 Result / Error / Validation | AppResult、AppError、UiError、FieldValidationの使い分けを確認した |
++| 03 Presentation契約 | State、Event、Message、Effect、Reducerの役割を確認した |
++| 04 BaseViewModel | ChannelによるEvent Queue、Reducer接続、Effect発行を確認した |
++| 05 SampleApp差分 | Core実装がSampleAppと一致し、Starterは01で整理済みであることを確認した |
++
++## 実装確認
++
++- `core:foundation`と`core:presentation`の本番ソースをこのStepで変更していない
++- Kotlin標準`Result<T>`をCore契約へ追加していない
++- BaseViewModelへ自動Loading、自動Error変換、UseCase実行処理を追加していない
++- Reducerへ副作用を追加していない
++- ViewModelへ`NavController`や`Context`を渡していない
++- SampleAppと比較してコメント以外のCore実装差分がない
++
++## 実行確認
++
++```powershell
++.\gradlew.bat :core:foundation:test :core:presentation:test :app:compileDebugKotlin
++```
++
++実行結果: 成功。
++
++- `:core:foundation:test`: 成功
++- `:core:presentation:test`: 成功
++- `:app:compileDebugKotlin`: 成功
++- 実行時間: 約34秒
+diff --git a/docs/回答/02-core-foundation-presentation/手順/01-Module境界と依存方向_回答.md b/docs/回答/02-core-foundation-presentation/手順/01-Module境界と依存方向_回答.md
+new file mode 100644
+index 0000000..31cc256
+--- /dev/null
++++ b/docs/回答/02-core-foundation-presentation/手順/01-Module境界と依存方向_回答.md
+@@ -0,0 +1,33 @@
++# 手順01回答: Module境界と依存方向
++
++## 確認対象
++
++- `BaseArchitecture/settings.gradle.kts`
++- `BaseArchitecture/core/foundation/build.gradle.kts`
++- `BaseArchitecture/core/presentation/build.gradle.kts`
++- `BaseArchitecture/app/build.gradle.kts`
++
++## 依存方向
++
++```text
++core:foundation
++        ↑
++core:presentation
++        ↑
++       app
++```
++
++`core:foundation`は`AppResult`、`AppError`、ValidationなどのAndroid非依存契約を保持する。`core:presentation`はFoundationの契約を利用し、`UiState`、`UiEvent`、`UiMessage`、`UiEffect`、`Reducer`、`BaseViewModel`を提供する。
++
++FoundationがPresentationやAppへ依存しないため、UseCaseやRepositoryがUIフレームワークへ引きずられず、Coreを別Featureや別アプリへ再利用できる。
++
++## Moduleを分ける理由
++
++PresentationまでFoundationへ置くと、ResultやErrorの契約を利用するだけでStateFlowやViewModelなどのUI基盤にも依存する。責務を分けることで、Domain寄りの処理はFoundationだけを参照し、画面を持つ処理だけがPresentationを参照できる。
++
++HiltやComposeなどのAndroid依存処理は、Foundationの契約へ入れない。依存性の注入や画面接続は上位Moduleで行う。
++
++## 回答
++
++Feature固有のState、Event、UseCase、Repository、業務ルールはCoreへ追加しない。CoreはFeatureが同じ契約で実装するための境界を提供し、Featureの具体的な処理は`app`側へ残す。
++
+diff --git a/docs/回答/02-core-foundation-presentation/手順/02-ResultErrorValidationを読む_回答.md b/docs/回答/02-core-foundation-presentation/手順/02-ResultErrorValidationを読む_回答.md
+new file mode 100644
+index 0000000..1f42097
+--- /dev/null
++++ b/docs/回答/02-core-foundation-presentation/手順/02-ResultErrorValidationを読む_回答.md
+@@ -0,0 +1,33 @@
++# 手順02回答: Result / Error / Validation
++
++## 役割の分離
++
++| 型 | 責務 |
++|---|---|
++| `AppResult<T>` | 処理の成功または失敗を表現する |
++| `AppError` | 失敗の分類、コード、原因を保持する |
++| `UiError` | 画面に表示するタイトル、メッセージ、行動候補を保持する |
++| `FieldValidationResult` | 入力項目がValidかInvalidかを表現する |
++| `FieldValidationError` | 入力項目、コード、理由を保持する |
++
++処理層は`AppResult.Success`または`AppResult.Failure`を返し、失敗時は`AppError`で意味を表す。ViewModelやRouteは必要に応じて`AppError`を`UiError`や`UiMessage`へ変換する。
++
++## Kotlin標準Resultを使わない理由
++
++このアーキテクチャでは、アプリ全体の失敗契約を`AppError`へ統一する。Kotlin標準`Result<T>`を混在させると、処理層ごとに失敗表現が変わり、エラーコード、分類、原因の扱いが揺れるためである。
++
++`AppResult`は成功値と`AppError`を明示的に持ち、`map`、`onSuccess`、`onFailure`、`getOrNull`、`errorOrNull`など、必要最小限の変換を提供する。
++
++## AppErrorとUiError
++
++`AppError`へ日本語の表示文言を直接入れない。`AppError`はログ、テスト、処理分岐で利用する処理側の情報であり、表示タイトルやRetryなどの行動候補は画面の都合で変わるためである。
++
++```text
++Repository / UseCase
++    -> AppResult.Failure(AppError)
++    -> ViewModelがUiMessageまたはUiEffectへ変換
++    -> RouteがUiErrorや表示文言へ変換
++```
++
++入力検証は`FieldValidationResult.Valid`または`Invalid(FieldValidationError)`で返し、画面へ生の例外を渡さない。
++
+diff --git a/docs/回答/02-core-foundation-presentation/手順/03-Presentation契約を読む_回答.md b/docs/回答/02-core-foundation-presentation/手順/03-Presentation契約を読む_回答.md
+new file mode 100644
+index 0000000..01583d7
+--- /dev/null
++++ b/docs/回答/02-core-foundation-presentation/手順/03-Presentation契約を読む_回答.md
+@@ -0,0 +1,30 @@
++# 手順03回答: Presentation契約
++
++## 4つの契約
++
++| 契約 | 意味 |
++|---|---|
++| `UiState` | 再描画されても同じ意味になる現在の画面状態 |
++| `UiEvent` | View / Screen / RouteからViewModelへ渡す入力 |
++| `UiMessage` | Stateを更新する理由や処理結果 |
++| `UiEffect` | Navigation、Dialog、Snackbarなど一度だけ扱う処理 |
++
++例えば保存処理では、`SaveClicked`をEventとして受け取り、`SaveStarted`や`SaveSucceeded`をMessageとしてdispatchする。保存完了Snackbarは`ShowSnackbar`のようなEffectとして発行する。
++
++```text
++SaveClicked          UiEvent
++SaveStarted          UiMessage
++isLoading = true     UiState
++ShowSnackbar(...)    UiEffect
++```
++
++## Reducerの責務
++
++Reducerは現在StateとMessageから次のStateを生成する純粋関数である。API、DB、Navigation、Dialog、ログ出力などの副作用は持たせない。
++
++この分離により、Reducerは入力と出力だけをUnit Testできる。UseCase呼び出しや単発UI処理はViewModel、Routeなどの責務として別に確認できる。
++
++## StateとEffectを分ける理由
++
++SnackbarやNavigationをStateへ入れると、Stateの再購読や画面再生成時に同じ処理を再実行する可能性がある。画面の現在値はStateに保持し、再実行したくない処理はEffectとして通知する。
++
+diff --git a/docs/回答/02-core-foundation-presentation/手順/04-BaseViewModelのEventQueueを確認_回答.md b/docs/回答/02-core-foundation-presentation/手順/04-BaseViewModelのEventQueueを確認_回答.md
+new file mode 100644
+index 0000000..b83692f
+--- /dev/null
++++ b/docs/回答/02-core-foundation-presentation/手順/04-BaseViewModelのEventQueueを確認_回答.md
+@@ -0,0 +1,40 @@
++# 手順04回答: BaseViewModelのEvent Queue
++
++## BaseViewModelの責務
++
++`BaseViewModel`は次の共通処理だけを持つ。
++
++- `MutableStateFlow`を内部に保持し、`StateFlow`として公開する
++- `MutableSharedFlow`を内部に保持し、`SharedFlow`として公開する
++- `Channel<E>(Channel.BUFFERED)`でEventを受け取る
++- `sendEvent(event)`からEventをChannelへ積む
++- Channelを順番に受信し、`handleEvent(event)`へ委譲する
++- `dispatch(message)`からReducerを呼んでStateを更新する
++- `emitEffect(effect)`からEffectを発行する
++- `stateValue`または`currentState()`で現在Stateを参照できるようにする
++
++## 処理フロー
++
++```text
++Screen / Route
++    -> sendEvent(event)
++    -> Channel<E>
++    -> handleEvent(event)
++    -> UseCase
++    -> dispatch(message) または emitEffect(effect)
++    -> Reducer / SharedFlow
++    -> StateFlow / RouteのEffect処理
++```
++
++ScreenやRouteはViewModelの処理本体を直接呼ばず、`sendEvent`で通知する。Feature ViewModelは`handleEvent`の中でUseCaseを呼び、結果をMessageやEffectへ変換する。
++
++## 保証範囲
++
++Channelによって、ViewModelが受信したEventは順次`handleEvent`へ渡される。ただし、複数スレッドから同時に送信した場合の呼び出し開始順まで保証する契約ではない。
++
++BaseViewModelへ多重クリック抑制、Busy中制御、自動Loading、自動Error変換を追加しない。必要な制御はFeatureの要件に応じて明示的に実装する。
++
++## ViewModelへ渡さないもの
++
++ViewModelへ`NavController`や`Context`を渡さない。NavigationはEffectをRouteが処理し、Androidの文字列やResourceはProviderなどの契約を経由する。
++
+diff --git a/docs/回答/02-core-foundation-presentation/手順/05-SampleAppとの差分確認と自己レビュー_回答.md b/docs/回答/02-core-foundation-presentation/手順/05-SampleAppとの差分確認と自己レビュー_回答.md
+new file mode 100644
+index 0000000..497a063
+--- /dev/null
++++ b/docs/回答/02-core-foundation-presentation/手順/05-SampleAppとの差分確認と自己レビュー_回答.md
+@@ -0,0 +1,43 @@
++# 手順05回答: SampleAppとの差分確認と自己レビュー
++
++## 比較対象
++
++Template / Solution側とSampleApp側について、次の実装を比較した。
++
++- `core/foundation`のResult、Error、Validation
++- `core/presentation`のState、Event、Message、Effect、Reducer、BaseViewModel
++
++比較時は、学習用KDocやコメントを除外し、型、公開API、処理内容、依存方向を確認した。
++
++## 比較結果
++
++| 対象 | コメント以外の実装差分 | 判定 |
++|---|---:|---|
++| AppResult / AppError / UiError / Validation | なし | 一致 |
++| UiState / UiEvent / UiMessage / UiEffect | なし | 一致 |
++| Reducer | なし | 一致 |
++| BaseViewModel | なし | 一致 |
++
++Starter画面とStarter専用Resourceは、SampleAppに存在しないTemplate専用コードとしてHANDS-001の完了時に削除済みである。したがって、このStepで不要なソース整理を追加する必要はない。
++
++## 自己レビューの結論
++
++- Kotlin標準`Result<T>`をCore契約へ追加していない
++- `AppError`と`UiError`を混同していない
++- Event、Message、State、Effectの役割を分離している
++- Reducerへ副作用を追加していない
++- BaseViewModelへ自動Loading、自動Error変換、UseCase実行ラッパーを追加していない
++- ViewModelへ`NavController`や`Context`を渡していない
++- Coreの実装はSampleAppと一致している
++
++## 理解確認
++
++1. `AppResult`とKotlin標準`Result`を分ける理由を説明できるか
++2. `AppError`をそのまま画面へ渡さず、`UiError`へ変換する理由を説明できるか
++3. `UiEvent`と`UiMessage`の違いを説明できるか
++4. SnackbarやNavigationを`UiEffect`で扱う理由を説明できるか
++5. ReducerにAPIやDBアクセスを入れてはいけない理由を説明できるか
++6. `sendEvent`、`handleEvent`、`dispatch`、`emitEffect`の役割を説明できるか
++
++この確認に答えられれば、型名だけでなく、後続Featureで契約を使い分ける意図まで理解できたと判断する。
++
+diff --git a/docs/回答/README.md b/docs/回答/README.md
+index 07a4bc2..42a24ee 100644
+--- a/docs/回答/README.md
++++ b/docs/回答/README.md
+@@ -1,11 +1,12 @@
+ # 回答資料
+ 
+ このディレクトリには、HandsOn課題に対する回答の進行状況と実装上の補足を置きます。
+ 
+ 回答ソース本体は `BaseArchitecture` 配下です。回答は課題の小課題単位でコミットし、各コミットの時点でビルド可能な状態を目指します。
+ 
+ ## 回答一覧
+ 
+ | 課題 | 回答 |
+ |---|---|
+ | HANDS-001 Sample Featureの共通部品 | [01-sample-shell](01-sample-shell/README.md) |
++| HANDS-002 Core Foundation / Presentation | [02-core-foundation-presentation](02-core-foundation-presentation/README.md) |
