@@ -1,5 +1,6 @@
 package jp.co.nsco.basearchitecture.feature.sample.presentation.history
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalNavigationDrawer
@@ -23,6 +24,10 @@ import kotlinx.coroutines.launch
 fun SampleHistoryRoute(navController: NavController) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val coroutineScope = rememberCoroutineScope()
+
+    BackHandler(enabled = drawerState.isOpen) {
+        coroutineScope.launch { drawerState.close() }
+    }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
