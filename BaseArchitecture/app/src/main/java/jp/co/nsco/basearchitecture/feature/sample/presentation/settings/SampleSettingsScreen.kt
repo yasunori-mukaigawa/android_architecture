@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
+import jp.co.nsco.basearchitecture.feature.sample.presentation.common.SampleBottomNavigation
+import jp.co.nsco.basearchitecture.feature.sample.presentation.common.SampleBottomNavigationItem
 
 /** Sample Settings画面の表示Composable。 */
 @Composable
@@ -21,10 +23,19 @@ import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
 fun SampleSettingsScreen(
     title: String,
     message: String,
+    onBottomNavigationItemClick: ((SampleBottomNavigationItem) -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(text = title) }) }
+        topBar = { TopAppBar(title = { Text(text = title) }) },
+        bottomBar = {
+            onBottomNavigationItemClick?.let { onClick ->
+                SampleBottomNavigation(
+                    selectedItem = SampleBottomNavigationItem.Settings,
+                    onItemClick = onClick
+                )
+            }
+        }
     ) { paddingValues ->
         Column(
             modifier = modifier.fillMaxSize().padding(paddingValues),
