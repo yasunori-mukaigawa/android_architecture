@@ -13,4 +13,23 @@
     <string name="template_starter_title">Starter</string>
     <string name="template_starter_message">Template is ready.</string>
 
+    <!--
+        HANDS-001 Route / Placeholder画面
+
+        ハンズオンの初期段階で利用する仮表示文言。
+        実案件では、案件の文言設計に合わせて追加・変更する。
+    -->
+    <string name="sample_home_title">Sample Home</string>
+    <string name="sample_home_placeholder">Sample Homeの仮画面です。</string>
+    <string name="sample_history_title">Sample History</string>
+    <string name="sample_history_placeholder">Sample Historyの仮画面です。</string>
+    <string name="sample_settings_title">Sample Settings</string>
+    <string name="sample_settings_placeholder">Sample Settingsの仮画面です。</string>
+    <string name="legal_document_title">法務文書</string>
+    <string name="legal_document_placeholder">法務文書の仮画面です。</string>
+    <string name="license_title">ライセンス</string>
+    <string name="license_placeholder">ライセンスの仮画面です。</string>
+    <string name="version_info_title">バージョン情報</string>
+    <string name="version_info_placeholder">バージョン情報の仮画面です。</string>
+
 </resources>
