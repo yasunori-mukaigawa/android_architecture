@@ -1,0 +1,250 @@
+diff --git a/BaseArchitecture/app/build.gradle.kts b/BaseArchitecture/app/build.gradle.kts
+index e371ebe..69873c6 100644
+--- a/BaseArchitecture/app/build.gradle.kts
++++ b/BaseArchitecture/app/build.gradle.kts
+@@ -66,6 +66,7 @@ dependencies {
+     implementation(libs.androidx.compose.ui.graphics)
+     implementation(libs.androidx.compose.ui.tooling.preview)
+     implementation(libs.androidx.compose.material3)
++    implementation(libs.androidx.compose.material.icons.extended)
+     implementation(libs.hilt.navigation.compose)
+     implementation(libs.hilt.android)
+     ksp(libs.hilt.compiler)
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/common/SampleNavigationComponents.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/common/SampleNavigationComponents.kt
+new file mode 100644
+index 0000000..fba4ffa
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/common/SampleNavigationComponents.kt
+@@ -0,0 +1,188 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.common
++
++import androidx.compose.foundation.layout.padding
++import androidx.compose.material.icons.Icons
++import androidx.compose.material.icons.automirrored.outlined.Article
++import androidx.compose.material.icons.outlined.Description
++import androidx.compose.material.icons.outlined.Gavel
++import androidx.compose.material.icons.outlined.History
++import androidx.compose.material.icons.outlined.Home
++import androidx.compose.material.icons.outlined.Info
++import androidx.compose.material.icons.outlined.Menu
++import androidx.compose.material.icons.outlined.Notifications
++import androidx.compose.material.icons.outlined.Settings
++import androidx.compose.material3.ExperimentalMaterial3Api
++import androidx.compose.material3.Icon
++import androidx.compose.material3.IconButton
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.material3.ModalDrawerSheet
++import androidx.compose.material3.NavigationBar
++import androidx.compose.material3.NavigationBarItem
++import androidx.compose.material3.NavigationDrawerItem
++import androidx.compose.material3.Text
++import androidx.compose.material3.TopAppBar
++import androidx.compose.material3.TopAppBarDefaults
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.graphics.vector.ImageVector
++import androidx.compose.ui.res.stringResource
++import androidx.compose.ui.text.font.FontWeight
++import androidx.compose.ui.unit.dp
++import jp.co.nsco.basearchitecture.R
++import jp.co.nsco.basearchitecture.feature.legal.domain.LegalDocumentType
++import jp.co.nsco.basearchitecture.feature.legal.presentation.LegalDocumentRoutes
++import jp.co.nsco.basearchitecture.feature.license.presentation.common.LicenseRoutes
++import jp.co.nsco.basearchitecture.feature.versioninfo.presentation.VersionInfoRoutes
++
++/**
++ * Sample Feature共通のTopAppBar。
++ *
++ * 表示とメニュー操作の通知だけを担当し、Drawerの開閉は呼び出し側へ委譲する。
++ */
++@OptIn(ExperimentalMaterial3Api::class)
++@Composable
++fun SampleTopBar(
++    titleResId: Int,
++    onMenuClick: () -> Unit
++) {
++    TopAppBar(
++        title = {
++            Text(
++                text = stringResource(titleResId),
++                fontWeight = FontWeight.Bold
++            )
++        },
++        navigationIcon = {
++            IconButton(onClick = onMenuClick) {
++                Icon(
++                    imageVector = Icons.Outlined.Menu,
++                    contentDescription = stringResource(R.string.sample_drawer_title)
++                )
++            }
++        },
++        actions = {
++            IconButton(onClick = { }) {
++                Icon(
++                    imageVector = Icons.Outlined.Notifications,
++                    contentDescription = null
++                )
++            }
++        },
++        colors = TopAppBarDefaults.topAppBarColors(
++            containerColor = MaterialTheme.colorScheme.surface,
++            titleContentColor = MaterialTheme.colorScheme.onSurface,
++            navigationIconContentColor = MaterialTheme.colorScheme.onSurface,
++            actionIconContentColor = MaterialTheme.colorScheme.onSurface
++        )
++    )
++}
++
++/**
++ * Sample Feature共通のNavigation Drawer内容。
++ *
++ * Drawer項目の表示と押下通知だけを担当し、遷移処理はRouteへ委譲する。
++ */
++@Composable
++fun SampleDrawerContent(
++    onItemClick: (SampleDrawerItem) -> Unit
++) {
++    ModalDrawerSheet(
++        drawerContainerColor = MaterialTheme.colorScheme.surface
++    ) {
++        Text(
++            text = stringResource(R.string.sample_drawer_title),
++            modifier = Modifier.padding(24.dp),
++            fontWeight = FontWeight.Bold
++        )
++
++        sampleDrawerItems().forEach { item ->
++            NavigationDrawerItem(
++                label = { Text(text = stringResource(item.labelResId)) },
++                selected = false,
++                onClick = { onItemClick(item) },
++                icon = {
++                    Icon(imageVector = item.icon, contentDescription = null)
++                },
++                modifier = Modifier.padding(horizontal = 12.dp)
++            )
++        }
++    }
++}
++
++/**
++ * Sample Feature共通のBottom Navigation。
++ *
++ * 選択状態の表示と押下通知だけを担当し、実際のNavigationはRouteへ委譲する。
++ */
++@Composable
++fun SampleBottomNavigation(
++    selectedItem: SampleBottomNavigationItem,
++    onItemClick: (SampleBottomNavigationItem) -> Unit
++) {
++    NavigationBar(
++        containerColor = MaterialTheme.colorScheme.surface,
++        tonalElevation = 6.dp
++    ) {
++        SampleBottomNavigationItem.entries.forEach { item ->
++            NavigationBarItem(
++                selected = item == selectedItem,
++                onClick = { onItemClick(item) },
++                icon = {
++                    Icon(
++                        imageVector = item.icon,
++                        contentDescription = stringResource(item.labelResId)
++                    )
++                },
++                label = { Text(text = stringResource(item.labelResId)) }
++            )
++        }
++    }
++}
++
++/** Sample FeatureのBottom Navigation項目。 */
++enum class SampleBottomNavigationItem(
++    val labelResId: Int,
++    val icon: ImageVector
++) {
++    /** 操作履歴画面。 */
++    History(R.string.sample_bottom_history, Icons.Outlined.History),
++
++    /** Sample Home画面。 */
++    Home(R.string.sample_bottom_home, Icons.Outlined.Home),
++
++    /** Sample Settings画面。 */
++    Settings(R.string.sample_bottom_settings, Icons.Outlined.Settings)
++}
++
++/** Navigation Drawerの表示項目。 */
++data class SampleDrawerItem(
++    val labelResId: Int,
++    val icon: ImageVector,
++    val destinationRoute: String? = null
++)
++
++/** Sample Featureから遷移できるDrawer項目を定義する。 */
++private fun sampleDrawerItems(): List<SampleDrawerItem> {
++    return listOf(
++        SampleDrawerItem(
++            labelResId = R.string.sample_drawer_privacy_policy,
++            icon = Icons.Outlined.Description,
++            destinationRoute = LegalDocumentRoutes.document(LegalDocumentType.PrivacyPolicy)
++        ),
++        SampleDrawerItem(
++            labelResId = R.string.sample_drawer_terms,
++            icon = Icons.Outlined.Gavel,
++            destinationRoute = LegalDocumentRoutes.document(LegalDocumentType.TermsOfService)
++        ),
++        SampleDrawerItem(
++            labelResId = R.string.sample_drawer_licenses,
++            icon = Icons.AutoMirrored.Outlined.Article,
++            destinationRoute = LicenseRoutes.List
++        ),
++        SampleDrawerItem(
++            labelResId = R.string.sample_drawer_version,
++            icon = Icons.Outlined.Info,
++            destinationRoute = VersionInfoRoutes.VersionInfo
++        )
++    )
++}
+diff --git a/BaseArchitecture/app/src/main/res/values/strings.xml b/BaseArchitecture/app/src/main/res/values/strings.xml
+index 8dac1b1..4f3996a 100644
+--- a/BaseArchitecture/app/src/main/res/values/strings.xml
++++ b/BaseArchitecture/app/src/main/res/values/strings.xml
+@@ -32,4 +32,14 @@
+     <string name="version_info_title">バージョン情報</string>
+     <string name="version_info_placeholder">バージョン情報の仮画面です。</string>
+ 
++    <!-- HANDS-001 共通Navigation部品の表示文言。 -->
++    <string name="sample_bottom_history">履歴</string>
++    <string name="sample_bottom_home">Home</string>
++    <string name="sample_bottom_settings">設定</string>
++    <string name="sample_drawer_title">メニュー</string>
++    <string name="sample_drawer_privacy_policy">プライバシーポリシー</string>
++    <string name="sample_drawer_terms">利用規約</string>
++    <string name="sample_drawer_licenses">ライセンス</string>
++    <string name="sample_drawer_version">バージョン情報</string>
++
+ </resources>
+diff --git a/BaseArchitecture/gradle/libs.versions.toml b/BaseArchitecture/gradle/libs.versions.toml
+index ea23e83..0036f22 100644
+--- a/BaseArchitecture/gradle/libs.versions.toml
++++ b/BaseArchitecture/gradle/libs.versions.toml
+@@ -34,6 +34,7 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
+ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+ androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
++androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+ hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+diff --git a/docs/回答/01-sample-shell/README.md b/docs/回答/01-sample-shell/README.md
+index 96e5319..b19e94d 100644
+--- a/docs/回答/01-sample-shell/README.md
++++ b/docs/回答/01-sample-shell/README.md
+@@ -10,7 +10,7 @@
+ |---|---|---|
+ | 01 | Routeと仮画面の追加 | 完了 |
+ | 02 | SampleGraphとAppNavHost | 完了 |
+-| 03 | 共通ナビゲーション部品 | 未着手 |
++| 03 | 共通ナビゲーション部品 | 完了 |
+ | 04 | 下部ナビゲーション接続 | 未着手 |
+ | 05 | ナビゲーションドロワー接続 | 未着手 |
+ | 06 | 共通レイアウト統合 | 未着手 |

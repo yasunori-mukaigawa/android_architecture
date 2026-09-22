@@ -1,0 +1,604 @@
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/domain/LegalDocumentType.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/domain/LegalDocumentType.kt
+new file mode 100644
+index 0000000..6d4f312
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/domain/LegalDocumentType.kt
+@@ -0,0 +1,27 @@
++package jp.co.nsco.basearchitecture.feature.legal.domain
++
++/**
++ * Navigationで扱う法務文書の種類。
++ *
++ * Step 01ではRoute引数を型付きで扱うために利用する。
++ * 文書本文の取得や表示は後続課題で追加する。
++ */
++enum class LegalDocumentType(
++    private val routeValue: String
++) {
++    /** プライバシーポリシー。 */
++    PrivacyPolicy("privacy_policy"),
++
++    /** 利用規約。 */
++    TermsOfService("terms_of_service");
++
++    /** Route引数に使用する安定した文字列を返す。 */
++    fun toRouteValue(): String = routeValue
++
++    companion object {
++        /** Route引数を法務文書種別へ変換する。 */
++        fun fromRouteValue(value: String): LegalDocumentType? {
++            return entries.firstOrNull { it.routeValue == value }
++        }
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentRoute.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentRoute.kt
+new file mode 100644
+index 0000000..b9e844c
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentRoute.kt
+@@ -0,0 +1,20 @@
++package jp.co.nsco.basearchitecture.feature.legal.presentation
++
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.res.stringResource
++import androidx.navigation.NavController
++import jp.co.nsco.basearchitecture.R
++import jp.co.nsco.basearchitecture.feature.legal.domain.LegalDocumentType
++
++/** 法務文書画面のRoute。NavControllerはRouteに留める。 */
++@Composable
++fun LegalDocumentRoute(
++    documentType: LegalDocumentType,
++    navController: NavController
++) {
++    LegalDocumentScreen(
++        title = stringResource(R.string.legal_document_title),
++        message = stringResource(R.string.legal_document_placeholder),
++        documentType = documentType
++    )
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentRoutes.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentRoutes.kt
+new file mode 100644
+index 0000000..de18917
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentRoutes.kt
+@@ -0,0 +1,18 @@
++package jp.co.nsco.basearchitecture.feature.legal.presentation
++
++import jp.co.nsco.basearchitecture.core.navigation.asRouteArgument
++import jp.co.nsco.basearchitecture.feature.legal.domain.LegalDocumentType
++
++/** 法務文書FeatureのNavigation Routeを定義する。 */
++object LegalDocumentRoutes {
++    /** 法務文書種別のRoute引数名。 */
++    const val ArgType = "legalDocumentType"
++
++    /** 法務文書画面のRouteパターン。 */
++    const val Document = "legal/{$ArgType}"
++
++    /** 指定した法務文書種別のRouteを生成する。 */
++    fun document(type: LegalDocumentType): String {
++        return "legal/${type.toRouteValue().asRouteArgument()}"
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentScreen.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentScreen.kt
+new file mode 100644
+index 0000000..b7b3c59
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/legal/presentation/LegalDocumentScreen.kt
+@@ -0,0 +1,53 @@
++package jp.co.nsco.basearchitecture.feature.legal.presentation
++
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.padding
++import androidx.compose.material3.ExperimentalMaterial3Api
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.material3.Scaffold
++import androidx.compose.material3.Text
++import androidx.compose.material3.TopAppBar
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.tooling.preview.Preview
++import jp.co.nsco.basearchitecture.feature.legal.domain.LegalDocumentType
++import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
++
++/** 法務文書画面のPlaceholder表示Composable。 */
++@Composable
++@OptIn(ExperimentalMaterial3Api::class)
++fun LegalDocumentScreen(
++    title: String,
++    message: String,
++    documentType: LegalDocumentType,
++    modifier: Modifier = Modifier
++) {
++    Scaffold(
++        topBar = { TopAppBar(title = { Text(text = title) }) }
++    ) { paddingValues ->
++        Column(
++            modifier = modifier.fillMaxSize().padding(paddingValues),
++            horizontalAlignment = Alignment.CenterHorizontally,
++            verticalArrangement = Arrangement.Center
++        ) {
++            Text(text = message, style = MaterialTheme.typography.bodyLarge)
++            Text(text = documentType.toRouteValue())
++        }
++    }
++}
++
++/** 法務文書PlaceholderのPreview。 */
++@Preview(showBackground = true)
++@Composable
++private fun LegalDocumentScreenPreview() {
++    BaseArchitectureTheme {
++        LegalDocumentScreen(
++            title = "法務文書",
++            message = "法務文書の仮画面です。",
++            documentType = LegalDocumentType.PrivacyPolicy
++        )
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/common/LicenseRoutes.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/common/LicenseRoutes.kt
+new file mode 100644
+index 0000000..8a43cec
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/common/LicenseRoutes.kt
+@@ -0,0 +1,7 @@
++package jp.co.nsco.basearchitecture.feature.license.presentation.common
++
++/** License FeatureのNavigation Routeを定義する。 */
++object LicenseRoutes {
++    /** License一覧画面のRoute。 */
++    const val List = "license"
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/list/LicenseRoute.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/list/LicenseRoute.kt
+new file mode 100644
+index 0000000..31d69d7
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/list/LicenseRoute.kt
+@@ -0,0 +1,15 @@
++package jp.co.nsco.basearchitecture.feature.license.presentation.list
++
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.res.stringResource
++import androidx.navigation.NavController
++import jp.co.nsco.basearchitecture.R
++
++/** License一覧画面のRoute。 */
++@Composable
++fun LicenseRoute(navController: NavController) {
++    LicenseScreen(
++        title = stringResource(R.string.license_title),
++        message = stringResource(R.string.license_placeholder)
++    )
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/list/LicenseScreen.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/list/LicenseScreen.kt
+new file mode 100644
+index 0000000..5c7ddc9
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/license/presentation/list/LicenseScreen.kt
+@@ -0,0 +1,46 @@
++package jp.co.nsco.basearchitecture.feature.license.presentation.list
++
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.padding
++import androidx.compose.material3.ExperimentalMaterial3Api
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.material3.Scaffold
++import androidx.compose.material3.Text
++import androidx.compose.material3.TopAppBar
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.tooling.preview.Preview
++import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
++
++/** License一覧画面のPlaceholder表示Composable。 */
++@Composable
++@OptIn(ExperimentalMaterial3Api::class)
++fun LicenseScreen(
++    title: String,
++    message: String,
++    modifier: Modifier = Modifier
++) {
++    Scaffold(
++        topBar = { TopAppBar(title = { Text(text = title) }) }
++    ) { paddingValues ->
++        Column(
++            modifier = modifier.fillMaxSize().padding(paddingValues),
++            horizontalAlignment = Alignment.CenterHorizontally,
++            verticalArrangement = Arrangement.Center
++        ) {
++            Text(text = message, style = MaterialTheme.typography.bodyLarge)
++        }
++    }
++}
++
++/** License一覧PlaceholderのPreview。 */
++@Preview(showBackground = true)
++@Composable
++private fun LicenseScreenPreview() {
++    BaseArchitectureTheme {
++        LicenseScreen("ライセンス", "ライセンスの仮画面です。")
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/common/SampleRoutes.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/common/SampleRoutes.kt
+new file mode 100644
+index 0000000..3c4e0ef
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/common/SampleRoutes.kt
+@@ -0,0 +1,17 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.common
++
++/**
++ * Sample Featureで利用するNavigation Routeを定義する。
++ *
++ * Route文字列を画面やGraphへ直書きせず、このオブジェクトへ集約する。
++ */
++object SampleRoutes {
++    /** Sample Home画面のRoute。 */
++    const val List = "sample"
++
++    /** Sample History画面のRoute。 */
++    const val History = "sample/history"
++
++    /** Sample Settings画面のRoute。 */
++    const val Settings = "sample/settings"
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/history/SampleHistoryRoute.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/history/SampleHistoryRoute.kt
+new file mode 100644
+index 0000000..62d48fe
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/history/SampleHistoryRoute.kt
+@@ -0,0 +1,14 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.history
++
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.res.stringResource
++import jp.co.nsco.basearchitecture.R
++
++/** Sample History画面のRoute。 */
++@Composable
++fun SampleHistoryRoute() {
++    SampleHistoryScreen(
++        title = stringResource(R.string.sample_history_title),
++        message = stringResource(R.string.sample_history_placeholder)
++    )
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/history/SampleHistoryScreen.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/history/SampleHistoryScreen.kt
+new file mode 100644
+index 0000000..de06ad0
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/history/SampleHistoryScreen.kt
+@@ -0,0 +1,46 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.history
++
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.padding
++import androidx.compose.material3.ExperimentalMaterial3Api
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.material3.Scaffold
++import androidx.compose.material3.Text
++import androidx.compose.material3.TopAppBar
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.tooling.preview.Preview
++import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
++
++/** Sample History画面の表示Composable。 */
++@Composable
++@OptIn(ExperimentalMaterial3Api::class)
++fun SampleHistoryScreen(
++    title: String,
++    message: String,
++    modifier: Modifier = Modifier
++) {
++    Scaffold(
++        topBar = { TopAppBar(title = { Text(text = title) }) }
++    ) { paddingValues ->
++        Column(
++            modifier = modifier.fillMaxSize().padding(paddingValues),
++            horizontalAlignment = Alignment.CenterHorizontally,
++            verticalArrangement = Arrangement.Center
++        ) {
++            Text(text = message, style = MaterialTheme.typography.bodyLarge)
++        }
++    }
++}
++
++/** Sample History画面のPreview。 */
++@Preview(showBackground = true)
++@Composable
++private fun SampleHistoryScreenPreview() {
++    BaseArchitectureTheme {
++        SampleHistoryScreen("Sample History", "Sample Historyの仮画面です。")
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/home/SampleRoute.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/home/SampleRoute.kt
+new file mode 100644
+index 0000000..3e05a28
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/home/SampleRoute.kt
+@@ -0,0 +1,19 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.home
++
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.res.stringResource
++import jp.co.nsco.basearchitecture.R
++
++/**
++ * Sample Home画面のRoute。
++ *
++ * 初期段階では状態管理やNavigation接続を持たず、Resourceから取得した表示値を
++ * StatelessなScreenへ渡す責務だけを持つ。
++ */
++@Composable
++fun SampleRoute() {
++    SampleScreen(
++        title = stringResource(R.string.sample_home_title),
++        message = stringResource(R.string.sample_home_placeholder)
++    )
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/home/SampleScreen.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/home/SampleScreen.kt
+new file mode 100644
+index 0000000..e5d76e8
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/home/SampleScreen.kt
+@@ -0,0 +1,51 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.home
++
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.padding
++import androidx.compose.material3.ExperimentalMaterial3Api
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.material3.Scaffold
++import androidx.compose.material3.Text
++import androidx.compose.material3.TopAppBar
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.tooling.preview.Preview
++import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
++
++/**
++ * Sample Home画面の表示Composable。
++ *
++ * ScreenはViewModel、UseCase、Repository、NavControllerを知らず、
++ * Routeから受け取った表示値だけを描画する。
++ */
++@Composable
++@OptIn(ExperimentalMaterial3Api::class)
++fun SampleScreen(
++    title: String,
++    message: String,
++    modifier: Modifier = Modifier
++) {
++    Scaffold(
++        topBar = { TopAppBar(title = { Text(text = title) }) }
++    ) { paddingValues ->
++        Column(
++            modifier = modifier.fillMaxSize().padding(paddingValues),
++            horizontalAlignment = Alignment.CenterHorizontally,
++            verticalArrangement = Arrangement.Center
++        ) {
++            Text(text = message, style = MaterialTheme.typography.bodyLarge)
++        }
++    }
++}
++
++/** Sample Home画面のPreview。 */
++@Preview(showBackground = true)
++@Composable
++private fun SampleScreenPreview() {
++    BaseArchitectureTheme {
++        SampleScreen("Sample Home", "Sample Homeの仮画面です。")
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/settings/SampleSettingsRoute.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/settings/SampleSettingsRoute.kt
+new file mode 100644
+index 0000000..cda25eb
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/settings/SampleSettingsRoute.kt
+@@ -0,0 +1,14 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.settings
++
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.res.stringResource
++import jp.co.nsco.basearchitecture.R
++
++/** Sample Settings画面のRoute。 */
++@Composable
++fun SampleSettingsRoute() {
++    SampleSettingsScreen(
++        title = stringResource(R.string.sample_settings_title),
++        message = stringResource(R.string.sample_settings_placeholder)
++    )
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/settings/SampleSettingsScreen.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/settings/SampleSettingsScreen.kt
+new file mode 100644
+index 0000000..bad0d1e
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/sample/presentation/settings/SampleSettingsScreen.kt
+@@ -0,0 +1,46 @@
++package jp.co.nsco.basearchitecture.feature.sample.presentation.settings
++
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.padding
++import androidx.compose.material3.ExperimentalMaterial3Api
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.material3.Scaffold
++import androidx.compose.material3.Text
++import androidx.compose.material3.TopAppBar
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.tooling.preview.Preview
++import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
++
++/** Sample Settings画面の表示Composable。 */
++@Composable
++@OptIn(ExperimentalMaterial3Api::class)
++fun SampleSettingsScreen(
++    title: String,
++    message: String,
++    modifier: Modifier = Modifier
++) {
++    Scaffold(
++        topBar = { TopAppBar(title = { Text(text = title) }) }
++    ) { paddingValues ->
++        Column(
++            modifier = modifier.fillMaxSize().padding(paddingValues),
++            horizontalAlignment = Alignment.CenterHorizontally,
++            verticalArrangement = Arrangement.Center
++        ) {
++            Text(text = message, style = MaterialTheme.typography.bodyLarge)
++        }
++    }
++}
++
++/** Sample Settings画面のPreview。 */
++@Preview(showBackground = true)
++@Composable
++private fun SampleSettingsScreenPreview() {
++    BaseArchitectureTheme {
++        SampleSettingsScreen("Sample Settings", "Sample Settingsの仮画面です。")
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoRoute.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoRoute.kt
+new file mode 100644
+index 0000000..ad1ec5d
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoRoute.kt
+@@ -0,0 +1,15 @@
++package jp.co.nsco.basearchitecture.feature.versioninfo.presentation
++
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.res.stringResource
++import androidx.navigation.NavController
++import jp.co.nsco.basearchitecture.R
++
++/** VersionInfo画面のRoute。 */
++@Composable
++fun VersionInfoRoute(navController: NavController) {
++    VersionInfoScreen(
++        title = stringResource(R.string.version_info_title),
++        message = stringResource(R.string.version_info_placeholder)
++    )
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoRoutes.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoRoutes.kt
+new file mode 100644
+index 0000000..1544dac
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoRoutes.kt
+@@ -0,0 +1,7 @@
++package jp.co.nsco.basearchitecture.feature.versioninfo.presentation
++
++/** VersionInfo FeatureのNavigation Routeを定義する。 */
++object VersionInfoRoutes {
++    /** バージョン情報画面のRoute。 */
++    const val VersionInfo = "version_info"
++}
+diff --git a/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoScreen.kt b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoScreen.kt
+new file mode 100644
+index 0000000..7b59ca0
+--- /dev/null
++++ b/BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/feature/versioninfo/presentation/VersionInfoScreen.kt
+@@ -0,0 +1,46 @@
++package jp.co.nsco.basearchitecture.feature.versioninfo.presentation
++
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.padding
++import androidx.compose.material3.ExperimentalMaterial3Api
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.material3.Scaffold
++import androidx.compose.material3.Text
++import androidx.compose.material3.TopAppBar
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.tooling.preview.Preview
++import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
++
++/** VersionInfo画面のPlaceholder表示Composable。 */
++@Composable
++@OptIn(ExperimentalMaterial3Api::class)
++fun VersionInfoScreen(
++    title: String,
++    message: String,
++    modifier: Modifier = Modifier
++) {
++    Scaffold(
++        topBar = { TopAppBar(title = { Text(text = title) }) }
++    ) { paddingValues ->
++        Column(
++            modifier = modifier.fillMaxSize().padding(paddingValues),
++            horizontalAlignment = Alignment.CenterHorizontally,
++            verticalArrangement = Arrangement.Center
++        ) {
++            Text(text = message, style = MaterialTheme.typography.bodyLarge)
++        }
++    }
++}
++
++/** VersionInfoPlaceholderのPreview。 */
++@Preview(showBackground = true)
++@Composable
++private fun VersionInfoScreenPreview() {
++    BaseArchitectureTheme {
++        VersionInfoScreen("バージョン情報", "バージョン情報の仮画面です。")
++    }
++}
+diff --git a/BaseArchitecture/app/src/main/res/values/strings.xml b/BaseArchitecture/app/src/main/res/values/strings.xml
+index 9523486..8dac1b1 100644
+--- a/BaseArchitecture/app/src/main/res/values/strings.xml
++++ b/BaseArchitecture/app/src/main/res/values/strings.xml
+@@ -13,4 +13,23 @@
+     <string name="template_starter_title">Starter</string>
+     <string name="template_starter_message">Template is ready.</string>
+ 
++    <!--
++        HANDS-001 Route / Placeholder画面
++
++        ハンズオンの初期段階で利用する仮表示文言。
++        実案件では、案件の文言設計に合わせて追加・変更する。
++    -->
++    <string name="sample_home_title">Sample Home</string>
++    <string name="sample_home_placeholder">Sample Homeの仮画面です。</string>
++    <string name="sample_history_title">Sample History</string>
++    <string name="sample_history_placeholder">Sample Historyの仮画面です。</string>
++    <string name="sample_settings_title">Sample Settings</string>
++    <string name="sample_settings_placeholder">Sample Settingsの仮画面です。</string>
++    <string name="legal_document_title">法務文書</string>
++    <string name="legal_document_placeholder">法務文書の仮画面です。</string>
++    <string name="license_title">ライセンス</string>
++    <string name="license_placeholder">ライセンスの仮画面です。</string>
++    <string name="version_info_title">バージョン情報</string>
++    <string name="version_info_placeholder">バージョン情報の仮画面です。</string>
++
+ </resources>
+diff --git a/docs/回答/01-sample-shell/README.md b/docs/回答/01-sample-shell/README.md
+index b3a5fe1..5bc476b 100644
+--- a/docs/回答/01-sample-shell/README.md
++++ b/docs/回答/01-sample-shell/README.md
+@@ -8,7 +8,7 @@
+ 
+ | Step | 内容 | 状態 |
+ |---|---|---|
+-| 01 | Routeと仮画面の追加 | 準備中 |
++| 01 | Routeと仮画面の追加 | 完了 |
+ | 02 | SampleGraphとAppNavHost | 未着手 |
+ | 03 | 共通ナビゲーション部品 | 未着手 |
+ | 04 | 下部ナビゲーション接続 | 未着手 |
