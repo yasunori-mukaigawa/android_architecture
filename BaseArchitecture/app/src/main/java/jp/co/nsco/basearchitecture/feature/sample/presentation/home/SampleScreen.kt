@@ -8,14 +8,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
+import jp.co.nsco.basearchitecture.R
 import jp.co.nsco.basearchitecture.feature.sample.presentation.common.SampleBottomNavigation
 import jp.co.nsco.basearchitecture.feature.sample.presentation.common.SampleBottomNavigationItem
+import jp.co.nsco.basearchitecture.feature.sample.presentation.common.SampleTopBar
+import jp.co.nsco.basearchitecture.ui.theme.BaseArchitectureTheme
 
 /**
  * Sample Home画面の表示Composable。
@@ -26,13 +27,19 @@ import jp.co.nsco.basearchitecture.feature.sample.presentation.common.SampleBott
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun SampleScreen(
-    title: String,
+    titleResId: Int,
     message: String,
+    onMenuClick: () -> Unit = {},
     onBottomNavigationItemClick: ((SampleBottomNavigationItem) -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(text = title) }) },
+        topBar = {
+            SampleTopBar(
+                titleResId = titleResId,
+                onMenuClick = onMenuClick
+            )
+        },
         bottomBar = {
             onBottomNavigationItemClick?.let { onClick ->
                 SampleBottomNavigation(
@@ -57,6 +64,9 @@ fun SampleScreen(
 @Composable
 private fun SampleScreenPreview() {
     BaseArchitectureTheme {
-        SampleScreen("Sample Home", "Sample Homeの仮画面です。")
+        SampleScreen(
+            titleResId = R.string.sample_home_title,
+            message = "Sample Homeの仮画面です。"
+        )
     }
 }
