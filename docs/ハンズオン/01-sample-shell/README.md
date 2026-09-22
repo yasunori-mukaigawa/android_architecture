@@ -26,6 +26,8 @@ feature/license/presentation/common/
 feature/versioninfo/presentation/
 ```
 
+Templateに含まれる起動確認用の`feature/starter`は、Sample Shellの起動入口を接続した時点で不要になるため、この課題の完了時に削除する。
+
 業務データ、ViewModel、UseCase、DataStore、Roomは後続課題で追加する。
 
 ## ファイル構成
