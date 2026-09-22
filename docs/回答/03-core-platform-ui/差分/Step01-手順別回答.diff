@@ -1,0 +1,430 @@
+diff --git a/docs/回答/03-core-platform-ui/README.md b/docs/回答/03-core-platform-ui/README.md
+new file mode 100644
+index 0000000..45320dd
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/README.md
+@@ -0,0 +1,31 @@
++# HANDS-003 回答: Core Platform / UI
++
++## 回答の位置づけ
++
++この回答は、`solution/02-core-foundation-presentation`を起点に、Android依存の共通部品とCompose UI基盤の責務を確認したものです。
++
++このStepでは、`StringProvider`、Logger、Dispatcher、Theme、Dialogなどを新しく作り直していません。Templateにすでにある契約、Android実装、DI登録、AppRootからの接続を確認し、SampleAppにある差分を後続Stepへ分類しています。
++
++## 手順別回答
++
++- [手順01 ModuleとDIを読む](./手順/01-ModuleとDIを読む_回答.md)
++- [手順02 Providerを追う](./手順/02-Providerを追う_回答.md)
++- [手順03 LoggerとScopeを確認](./手順/03-LoggerとScopeを確認_回答.md)
++- [手順04 Navigationと共通UIを確認](./手順/04-Navigationと共通UIを確認_回答.md)
++- [手順05 Themeを触ってみる](./手順/05-Themeを触ってみる_回答.md)
++- [手順06 SampleAppとの差分を分類](./手順/06-SampleAppとの差分を分類_回答.md)
++
++## 回答の前提
++
++- Coreの共通部品は、Featureが直接Android APIを使わないための境界である
++- Coreは契約と標準実装を提供するが、Feature固有の業務判断を持たない
++- AppRootはThemeとNavigationのアプリ共通入口であり、Feature処理を集約しない
++- TemplateとSampleAppの差分は、すべて03で解消するのではなく、対応表の後続Stepへ分ける
++
++## 実装変更について
++
++この回答では、`BaseArchitecture`配下の本番ソースを変更していない。03の成果物は、既存実装の読み解き結果、差分分類、利用方法の説明である。
++
++## 方針上の要確認事項
++
++`AndroidExternalUriOpener`の公開APIは`AppResult<Unit>`を返すが、内部のprivate関数ではKotlin標準`Result<Unit>`と`runCatching`を使用している。SampleAppと実装は一致しているものの、「Kotlin標準Resultを使わない」というプロジェクト方針には抵触するため、Step08までに扱いを決める必要がある。
+diff --git a/docs/回答/03-core-platform-ui/レビュー結果.md b/docs/回答/03-core-platform-ui/レビュー結果.md
+new file mode 100644
+index 0000000..5334b31
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/レビュー結果.md
+@@ -0,0 +1,36 @@
++# HANDS-003 レビュー結果
++
++## 手順別確認
++
++| 手順 | 確認結果 |
++|---|---|
++| 01 ModuleとDI | `core:platform`、`core:ui`、CoreModule、ThemeUiModule、AppRootの責務を確認した |
++| 02 Provider | Resource、Time、Dispatcher、Scopeの契約とAndroid実装、DI登録を確認した |
++| 03 LoggerとScope | Timber初期化、既定TAG、個別TAG、Application Scopeの扱いを確認した |
++| 04 Navigationと共通UI | Route引数、External URI、Dialog、Loadingの責務境界を確認した |
++| 05 Theme | AppRootからBaseAppTheme、ThemeRegistry、Preset、MaterialThemeへ至る流れを確認した |
++| 06 SampleApp差分 | 03、04、05、07へ差分を分類した |
++
++## 実装確認
++
++- `core:platform`の共通Provider実装を別名で追加していない
++- `core:ui`の共通UI部品を別名で追加していない
++- `BaseArchitecture`の本番ソースは変更していない
++- Handson課題の実験用変更をSolutionへ持ち込んでいない
++
++## 方針上の要確認事項
++
++`AndroidExternalUriOpener`は公開契約では`AppResult`を使用しているが、private実装でKotlin標準`Result`を使用している。SampleAppとの実装差分はないが、標準`Result`を使わない方針との整合はStep08までに判断する。
++
++## 実行確認
++
++```powershell
++.\gradlew.bat :core:platform:test :core:ui:test :app:compileDebugKotlin
++```
++
++実行結果: 成功。
++
++- `:core:platform:test`: 成功
++- `:core:ui:test`: 成功
++- `:app:compileDebugKotlin`: 成功
++- 実行時間: 約7秒（既存タスクはUP-TO-DATE）
+diff --git a/docs/回答/03-core-platform-ui/手順/01-ModuleとDIを読む_回答.md b/docs/回答/03-core-platform-ui/手順/01-ModuleとDIを読む_回答.md
+new file mode 100644
+index 0000000..b56cc48
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/手順/01-ModuleとDIを読む_回答.md
+@@ -0,0 +1,57 @@
++# 手順01 ModuleとDIを読む: 回答
++
++## 確認対象
++
++- `BaseArchitecture/settings.gradle.kts`
++- `BaseArchitecture/core/platform/build.gradle.kts`
++- `BaseArchitecture/core/ui/build.gradle.kts`
++- `BaseArchitecture/core/platform/src/main/java/jp/co/nsco/basearchitecture/core/di/CoreModule.kt`
++- `BaseArchitecture/core/ui/src/main/java/jp/co/nsco/basearchitecture/core/ui/theme/ThemeUiModule.kt`
++- `BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/MainActivity.kt`
++- `BaseArchitecture/app/src/main/java/jp/co/nsco/basearchitecture/app/AppRoot.kt`
++
++## Moduleの依存方向
++
++`settings.gradle.kts`では、`app`とCoreの各Moduleが登録されている。
++
++```text
++core:foundation
++       ↑
++core:platform     core:presentation
++       ↑                ↑
++       └────── app ─────┘
++              ↑
++            core:ui
++```
++
++実際には`core:platform`と`core:ui`はFoundationの共通契約を利用し、`app`が必要なCore Moduleを利用する。PlatformはAndroid API、UIはCompose UIを扱うが、Featureの業務処理は持たない。
++
++## DI登録
++
++`CoreModule`は、次の契約と標準実装を`@Binds`・`@Singleton`で紐付ける。
++
++- `StringProvider` / `AndroidStringProvider`
++- `RawResourceReader` / `AndroidRawResourceReader`
++- `DispatcherProvider` / `AppDispatcherProvider`
++- `CoroutineScopeProvider` / `AppCoroutineScopeProvider`
++- `AppLogger` / `AndroidAppLogger`
++- `AppLoggingConfiguration` / `DefaultAppLoggingConfiguration`
++- `AppLoggingInitializer` / `TimberAppLoggingInitializer`
++- `DateTimeProvider` / `AppDateTimeProvider`
++- `AppClock` / `SystemAppClock`
++- `AppInfoProvider` / `AndroidAppInfoProvider`
++- `ExternalUriOpener` / `AndroidExternalUriOpener`
++
++`ThemeUiModule`は`BaseThemeRegistry`に`DefaultBaseThemeRegistry`を登録する。
++
++利用側は`AndroidStringProvider`や`AndroidAppLogger`を直接生成せず、契約をConstructor Injectionで受け取る。これにより、Android実装からFake実装やテスト実装へ差し替えられる。
++
++## Appの入口
++
++`MainActivity`は`@AndroidEntryPoint`を持つComposeの入口であり、`setContent`から`AppRoot()`を表示するだけである。`AppRoot`がアプリThemeと`AppNavHost`を接続する。
++
++この構造により、ActivityへNavigation、Theme、Featureの業務処理を集約しない。AndroidのEntry Point、アプリ共通のCompose構成、Featureの処理を分離できる。
++
++## 結論
++
++Hilt Moduleは、共通契約と実行環境に依存する標準実装を接続する場所である。Feature固有のRepository、DAO、Gateway、業務ルールを`CoreModule`へ追加してはいけない。CoreがFeatureを知ると、共通基盤ではなくアプリ固有の依存置き場になるためである。
+diff --git a/docs/回答/03-core-platform-ui/手順/02-Providerを追う_回答.md b/docs/回答/03-core-platform-ui/手順/02-Providerを追う_回答.md
+new file mode 100644
+index 0000000..6bc9f8b
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/手順/02-Providerを追う_回答.md
+@@ -0,0 +1,46 @@
++# 手順02 Providerを追う: 回答
++
++## Providerの利用経路
++
++| 契約 | Android実装 | DI登録 | 現時点の利用状況 |
++|---|---|---|---|
++| `StringProvider` | `AndroidStringProvider` | `CoreModule` | TemplateのShellではFeature利用は限定的。後続Featureの文言解決で利用する |
++| `RawResourceReader` | `AndroidRawResourceReader` | `CoreModule` | Legal / LicenseなどのRawResource読込で後続利用する |
++| `DateTimeProvider` | `AppDateTimeProvider` | `CoreModule` | Homeの日付・挨拶、Operation Logの日時で後続利用する |
++| `AppClock` | `SystemAppClock` | `CoreModule` | キャッシュ期限、保存時刻、経過時間の判定で利用する |
++| `DispatcherProvider` | `AppDispatcherProvider` | `CoreModule` | Application ScopeへIO Dispatcherを渡し、後続のStorage / Networkでも利用する |
++| `CoroutineScopeProvider` | `AppCoroutineScopeProvider` | `CoreModule` | アプリケーション単位の長寿命処理へ利用する |
++
++## StringProvider
++
++`StringProvider`はstring resourceの取得契約だけを持ち、`AndroidStringProvider`が`@ApplicationContext Context`の`getString`へ委譲する。
++
++ViewModelやUseCaseがContextを直接保持せず、文字列取得を契約経由にできる。テストではFakeStringProviderを渡して、resource IDと期待文言の対応を制御できる。
++
++文言の選択ロジックはStringProviderへ置かない。例えばエラーコードから表示文言を選ぶ処理は、ErrorResolverやFacadeなどの利用側が担当し、StringProviderは解決済みresourceを取得するだけにする。
++
++## RawResourceReader
++
++`RawResourceReader`はraw resource読込の契約であり、`AndroidRawResourceReader`がUTF-8テキストとして読み取る。失敗時は例外をそのまま上位へ投げず、`AppResult.Failure(AppError.LocalStorage(...))`へ変換する。
++
++呼び出し側はContext、Resources、InputStreamを知らない。License本文や法務文書など、Androidのraw resourceを使うFeatureから契約を通して利用する。
++
++## Time Provider
++
++`DateTimeProvider`は`ZonedDateTime`として現在日時を提供し、表示用日付やタイムゾーンを含む業務日時に使う。`AppClock`はepoch millisecondsを提供し、キャッシュ期限や経過時間などの比較に使う。
++
++本番実装はそれぞれ`ZonedDateTime.now()`と`System.currentTimeMillis()`を内部で使うが、利用側は直接呼ばない。テストでは固定日時実装へ差し替えられる。
++
++## Coroutine Provider
++
++`DispatcherProvider`はMain、IO、Defaultを提供する。どの処理をどのDispatcherで実行するかはUseCase、Repository、Gatewayなど処理を持つ側が判断する。Provider自身は`withContext`を実行しない。
++
++`AppCoroutineScopeProvider`は`SupervisorJob() + dispatcherProvider.io`でアプリケーション単位のScopeを一つ提供する。DataStoreやアプリ全体同期のような長寿命処理を対象とし、画面処理には使用しない。
++
++- ViewModelの処理: `viewModelScope`
++- ComposeのUI処理: `rememberCoroutineScope`など既存Lifecycleに紐づくScope
++- アプリ全体の長寿命処理: `CoroutineScopeProvider`
++
++## 結論
++
++ProviderはAndroid依存を消すための単なるラッパーではなく、テスト時に時刻、Dispatcher、Resource、Scopeを差し替えるための契約でもある。Featureが直接ContextやシステムAPIへ依存しないことが重要である。
+diff --git a/docs/回答/03-core-platform-ui/手順/03-LoggerとScopeを確認_回答.md b/docs/回答/03-core-platform-ui/手順/03-LoggerとScopeを確認_回答.md
+new file mode 100644
+index 0000000..a76f4b2
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/手順/03-LoggerとScopeを確認_回答.md
+@@ -0,0 +1,49 @@
++# 手順03 LoggerとScopeを確認: 回答
++
++## Loggerの責務
++
++`AppLogger`はdebug、info、warn、errorのログ出力契約を持つ。`AndroidAppLogger`がTimberへ委譲するため、UseCase、Repository、Gateway、ViewModelはAndroid Log APIやTimber APIを直接参照しない。
++
++ログ実装を分けることで、次を差し替えられる。
++
++- Unit Test用のFake Logger
++- Debug用のTimber DebugTree
++- Production用のCrashlyticsやDatadog Tree
++- ログ出力抑制やマスキング方針
++
++## Application起動時の初期化
++
++`BaseArchitectureApplication`は`@HiltAndroidApp`を持ち、`AppLoggingInitializer`を注入する。`onCreate`で次の初期化を一度行う。
++
++```text
++BaseArchitectureApplication.onCreate
++    -> AppLoggingInitializer.initialize
++    -> TimberAppLoggingInitializer
++    -> Debugビルドなら Timber.DebugTree を登録
++```
++
++ApplicationはTimberの具体APIを直接呼ばず、初期化契約だけを利用する。`TimberAppLoggingInitializer`は初期化済みフラグを持ち、DebugTreeの重複登録を抑制する。
++
++## TAG解決
++
++Initializerで既定TAGを設定できる。`AndroidAppLogger`の各メソッドに個別TAGが渡された場合はそれを優先し、nullまたは空白の場合は`AppLoggingConfiguration.defaultTag`へフォールバックする。
++
++```text
++個別TAGあり       -> 個別TAG
++個別TAGなし       -> Initializer設定TAG
++Initializer未設定 -> BaseArchitecture
++```
++
++## ScopeとDispatcher
++
++`AppCoroutineScopeProvider`はアプリ全体の長寿命処理用であり、Featureごとの汎用Scopeではない。画面が破棄されても処理を続ける必要がない処理にこれを使うと、ライフサイクルを越えて処理が残るため不適切である。
++
++Dispatcherは`DispatcherProvider`から取得し、テストではTestDispatcherへ差し替える。Scopeは`CoroutineScopeProvider`から取得するが、ViewModelやComposeの既存Scopeを置き換えるものではない。
++
++## 現時点のFeature利用
++
++03の開始時点では、Shell画面にFeature固有のログ処理や長寿命バックグラウンド処理を追加していない。ProviderとDIの契約を先に確定し、実際のFeature利用はSettings、Operation Log、Networkなどの後続Stepで行う。
++
++## 結論
++
++Loggerは個別ログ出力、Initializerはプロセス全体のログ基盤初期化、Scope Providerは長寿命処理の所有を担当する。それぞれを混ぜず、ApplicationとFeatureからの利用方法を分離する。
+diff --git a/docs/回答/03-core-platform-ui/手順/04-Navigationと共通UIを確認_回答.md b/docs/回答/03-core-platform-ui/手順/04-Navigationと共通UIを確認_回答.md
+new file mode 100644
+index 0000000..406ce31
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/手順/04-Navigationと共通UIを確認_回答.md
+@@ -0,0 +1,51 @@
++# 手順04 Navigationと共通UIを確認: 回答
++
++## RouteArgumentEncoder
++
++`RouteArgumentEncoder.kt`の`String.asRouteArgument()`は、Routeに埋め込む文字列を`Uri.encode`するだけの薄い補助である。
++
++Route引数には`/`、`?`、`&`、`=`などが構文として使われるため、外部データや入力値をそのまま埋め込むとRouteが意図せず分割される。Coreはこのencodeだけを補助し、Route定義、NavHost、NavController、遷移条件はApp / Feature側に残す。
++
++## ExternalUriOpener
++
++`ExternalUriOpener`は外部URI起動の契約で、`AndroidExternalUriOpener`がApplicationContextとIntentを使って実装する。
++
++```text
++Feature / ViewModel / UseCase
++    -> ExternalUriOpener.open(ExternalUri)
++    -> AndroidExternalUriOpener
++    -> Intent.ACTION_VIEW
++    -> AppResult<Unit>
++```
++
++`ExternalUri`はprimary URIと任意のfallback URIを保持する。primaryの起動に失敗した場合はfallbackを試し、どちらも失敗した場合は`AppError.Unexpected`を含む`AppResult.Failure`へ変換する。呼び出し側へContextやIntentを漏らさない。
++
++## AppDialog
++
++`DialogUiState`はタイトル、メッセージ、ボタン文言だけを保持する。`AppDialog`はMaterial3の`AlertDialog`を表示し、クリックやdismissのcallbackを外部から受け取る。
++
++表示判断や業務処理はAppDialogの責務ではない。
++
++```text
++ViewModel / Route
++    -> Dialogを表示する状態またはEffectを決定
++    -> 表示文言を解決済みStringとしてDialogUiStateへ変換
++    -> AppDialogへ渡す
++    -> callbackでViewModelへEventを通知
++```
++
++文字列をAppDialog内部でresource IDから解決しないのは、共通UIがFeature固有の文言やContextへ依存しないためである。
++
++## LoadingContent
++
++`LoadingContent`はcontent slotを表示し、`isLoading`がtrueの場合だけCircularProgressIndicatorと透明なクリック抑止Overlayを重ねる。Loading開始・終了の判断は呼び出し側のUiStateが担当する。
++
++Core UIがLoadingを自動制御すると、UseCaseやViewModelの処理状態と表示状態が暗黙に結びつき、画面ごとの例外や複数処理の扱いが難しくなる。このため、部品は表示だけを担当する。
++
++## 方針上の要確認事項
++
++公開される`ExternalUriOpener.open`は`AppResult<Unit>`を返すが、実装内部のprivate `openUri`はKotlin標準`Result<Unit>`を使用している。SampleAppとTemplateで一致しているため実装差分ではないが、プロジェクト方針を厳密に適用するなら、標準Resultを使わずAppResultへ統一する修正候補である。
++
++## 結論
++
++CoreはNavigation全体やDialog判断を抽象化しない。Route引数encode、外部URI起動、Dialog表示、Loading表示という再利用可能な境界だけを提供し、遷移判断、表示判断、業務処理はApp / Feature側に残す。
+diff --git a/docs/回答/03-core-platform-ui/手順/05-Themeを触ってみる_回答.md b/docs/回答/03-core-platform-ui/手順/05-Themeを触ってみる_回答.md
+new file mode 100644
+index 0000000..b144ee9
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/手順/05-Themeを触ってみる_回答.md
+@@ -0,0 +1,42 @@
++# 手順05 Themeを触ってみる: 回答
++
++## TemplateのTheme適用経路
++
++Templateでは、`MainActivity`が`AppRoot`を表示し、`AppRoot`が`BaseArchitectureTheme`で`AppNavHost`を包む。
++
++```text
++MainActivity
++    -> AppRoot
++    -> BaseArchitectureTheme
++    -> BaseAppTheme
++    -> MaterialTheme / LocalBaseSpacing
++    -> AppNavHostと配下のComposable
++```
++
++`BaseArchitectureTheme`は現在、`ThemeSettings()`と`DefaultBaseThemeRegistry()`を渡している。アプリ側Theme Composableを一段置くことで、後からThemeSettingsの取得元をDataStoreやAppViewModelへ変更しても、各ScreenやPreviewの呼び出し方を変えずに済む。
++
++## Core UI Themeの責務
++
++- `BaseAppTheme`: ThemeSettingsをもとにDark / Lightを判定し、Presetを解決してMaterialThemeへ適用する
++- `BaseThemePreset`: ColorScheme、Typography、Shapes、Spacingをテーマ単位で保持する
++- `BaseThemeRegistry`: Theme IDからPresetを解決し、利用可能なTheme IDを提供する
++- `ThemeModeResolver`: System / Light / Darkの表示モードを解決する
++- `CompositionLocal`: Themeに紐づくSpacingを配下Composableへ提供する
++
++各Screenが個別にMaterialThemeやSpacingを定義せず、AppRootから一つのTheme入口を使うことで、画面間の見た目の不整合を防ぐ。
++
++## 実験結果として確認すること
++
++ThemeのColorScheme、Shape、Spacing、またはThemeSettingsを一時的に変更すると、`BaseAppTheme`配下のComposableへ反映される。これはTheme値が個別Screenではなく、AppRootからCompositionLocalとMaterialThemeを通じて伝播しているためである。
++
++実験用の変更は課題ブランチへ残さない。課題完了後はTemplateのDefault ThemeとSampleAppの対応する実装を基準に戻す。
++
++## SampleAppとの差分
++
++SampleAppでは、TemplateのDefaultテーマに加えてDashboardテーマがあり、`BaseThemePreset`と`BaseThemeRegistry`が複数Theme IDを扱う。またSampleAppの`AppRoot`はAppViewModelからThemeSettingsを購読し、Hilt EntryPoint経由でThemeRegistryを取得している。
++
++ただし、Theme設定の保存・選択とAppViewModelはDataStoreやSettings Featureと結びつくため、この差分を03で完成させない。03ではTheme契約と適用経路を理解し、05でSettingsと永続化を接続する。
++
++## 結論
++
++Themeは単なる色定義ではなく、保存されたThemeSettings、Theme IDを解決するRegistry、Preset、MaterialTheme、Spacing提供をつなぐアプリ共通の表示基盤である。FeatureはThemeの解決や保存を担当せず、適用済みのMaterialThemeと共通UI契約を利用する。
+diff --git a/docs/回答/03-core-platform-ui/手順/06-SampleAppとの差分を分類_回答.md b/docs/回答/03-core-platform-ui/手順/06-SampleAppとの差分を分類_回答.md
+new file mode 100644
+index 0000000..644fa62
+--- /dev/null
++++ b/docs/回答/03-core-platform-ui/手順/06-SampleAppとの差分を分類_回答.md
+@@ -0,0 +1,52 @@
++# 手順06 SampleAppとの差分を分類: 回答
++
++## 比較結果
++
++Core Platformの契約・Android実装は、TemplateとSampleAppで対応している。Core UIにはDefaultテーマを中心に共通する実装があるが、SampleAppにはDashboardテーマ用のPreset、Color、Shape、Spacing、Registry分岐が追加されている。
++
++SampleAppにあってTemplateにない主なファイルは、次のように分類する。
++
++| 差分 | 判定 | 対応Step | 理由 |
++|---|---|---:|---|
++| `core/ui/markdown/MarkdownDocumentView.kt` | 03対象外 | 07 | Legal / Licenseの文書表示で利用するUIだから |
++| `core/ui/markdown/MarkdownRenderOptions.kt` | 03対象外 | 07 | Markdown表示のFeature要件に属するから |
++| `app/AppViewModel.kt` | 構造だけ確認 | 05 | ThemeSettingsなどアプリ共通状態を扱うから |
++| `app/auth/AuthModule.kt` | 03対象外 | 後続 | 認証固有の依存だから |
++| `app/database/*` | 03対象外 | 04 | Room / Database基盤だから |
++| `app/datastore/*` | 03対象外 | 04・05 | DataStore基盤とSettings保存だから |
++| `app/network/*` | 03対象外 | 04 | Network基盤だから |
++| Dashboard ThemePreset / Registry分岐 | 構造を確認 | 05 | SettingsからのTheme選択と結びつくから |
++| SampleAppの大量のstring resource | 03対象外 | 05以降 | Featureの表示文言だから |
++
++## 03で確認すべき差分
++
++03で確認するのは、差分を見つけたらすぐ実装することではなく、次の接続である。
++
++```text
++Coreの契約
++    -> Android / Composeの標準実装
++    -> Hilt ModuleまたはTheme Module
++    -> AppRoot / Application
++    -> 後続Featureからの利用
++```
++
++Providerの利用がTemplateのShell画面にまだ少ないのは、Providerが不要だからではない。Homeの日付、Settingsの文字列・保存、LegalのRawResource、VersionInfoのAppInfo、Operation Logの時刻など、後続Featureで利用する前提を先にCoreへ置いているためである。
++
++## 実装差分の判定
++
++- Core Platformの共通契約・Android実装: SampleAppと一致
++- Core UIのDefault Theme基盤: SampleAppと共通
++- Dashboard Theme: 05でSettings接続とあわせて扱う
++- Markdown UI: 07で扱う
++- DataStore / Database / Network: 04以降で扱う
++- Feature固有の文言、State、UseCase: 05以降で扱う
++
++したがって、03でCore Platform / UIを別実装に置き換える必要はない。後続Stepで利用が発生した時点で、既存契約へ接続する。
++
++## 方針上の要確認事項
++
++`AndroidExternalUriOpener`内部の標準`Result`利用は、TemplateとSampleAppで一致しているが、プロジェクトの独自`AppResult`方針とは整合しない。このような「SampleAppと一致しているが設計ルールには疑義がある」項目は、差分なしとして黙って終わらせず、Step08までの確認事項として残す。
++
++## 結論
++
++TemplateとSampleAppの差分は、03のCore理解、04のPlatform基盤、05のSettings / Theme接続、07のLegal / License / VersionInfoへ分割される。03の完了条件は、SampleAppを一気にコピーすることではなく、差分を責務の境界に沿って分類できることである。
+diff --git a/docs/回答/README.md b/docs/回答/README.md
+index 42a24ee..ab8d4bf 100644
+--- a/docs/回答/README.md
++++ b/docs/回答/README.md
+@@ -1,12 +1,13 @@
+ # 回答資料
+ 
+ このディレクトリには、HandsOn課題に対する回答の進行状況と実装上の補足を置きます。
+ 
+ 回答ソース本体は `BaseArchitecture` 配下です。回答は課題の小課題単位でコミットし、各コミットの時点でビルド可能な状態を目指します。
+ 
+ ## 回答一覧
+ 
+ | 課題 | 回答 |
+ |---|---|
+ | HANDS-001 Sample Featureの共通部品 | [01-sample-shell](01-sample-shell/README.md) |
+ | HANDS-002 Core Foundation / Presentation | [02-core-foundation-presentation](02-core-foundation-presentation/README.md) |
++| HANDS-003 Core Platform / UI | [03-core-platform-ui](03-core-platform-ui/README.md) |
