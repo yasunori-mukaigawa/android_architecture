@@ -9,3 +9,4 @@
 | 課題 | 回答 |
 |---|---|
 | HANDS-001 Sample Featureの共通部品 | [01-sample-shell](01-sample-shell/README.md) |
+| HANDS-002 Core Foundation / Presentation | [02-core-foundation-presentation](02-core-foundation-presentation/README.md) |
