@@ -32,4 +32,14 @@
     <string name="version_info_title">バージョン情報</string>
     <string name="version_info_placeholder">バージョン情報の仮画面です。</string>
 
+    <!-- HANDS-001 共通Navigation部品の表示文言。 -->
+    <string name="sample_bottom_history">履歴</string>
+    <string name="sample_bottom_home">Home</string>
+    <string name="sample_bottom_settings">設定</string>
+    <string name="sample_drawer_title">メニュー</string>
+    <string name="sample_drawer_privacy_policy">プライバシーポリシー</string>
+    <string name="sample_drawer_terms">利用規約</string>
+    <string name="sample_drawer_licenses">ライセンス</string>
+    <string name="sample_drawer_version">バージョン情報</string>
+
 </resources>
